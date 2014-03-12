@@ -1,12 +1,11 @@
 require 'spec_helper'
 
-feature 'Sing in user' do 
-	scenario 'user an email as a username' do	
-		visit new_user_session_path
-		page.has_content?("email")
-		fill_in 'user_email', with: "example@rubyonrails.org"
-		fill_in 'user_password', with: "ivanaivana"
-		click_button 'Sign in'
-		page.has_content?("Sign in")
+	feature 'Sing in user' do 
+		scenario 'with user email and password' do	
+			@user=FactoryGirl.create(:user)
+	 	  sign_in(@user)
+	  	expect(page).to have_css('a', text: "Logout")
+	  	click_link("Logout")
+	  	expect(page).to have_css('a', text: "Login")
 	end
 end

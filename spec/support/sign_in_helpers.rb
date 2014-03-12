@@ -1,20 +1,17 @@
 module SignInHelpers
 
-	def sign_up
-
+	def sign_up(user)
+		visit new_user_session_path
+		fill_in "user_email", with: user.email
+		fill_in "user_password", with: user.password
+		fill_in "user_password_confirmation", with: user.password_confirmation
+		click_button "Sign up"
 	end
 	
-	def sign_in
+	def sign_in(user)	
 		visit new_user_session_path
-		fill_in "user_email", with: "example@rubyonrails.org"
-		fill_in "user_password", with: "ivanaivana"
-		click_button "Sign in"
-	end
-
-	def sign_in_fake
-		visit sign_in_path
-		fill_in "user_email", with: "person@example.com"
-		fill_in "user_password", with: "123456"
+		fill_in "user_email", with: user.email
+		fill_in "user_password", with: user.password
 		click_button "Sign in"
 	end
 
