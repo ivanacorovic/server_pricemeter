@@ -1,2 +1,18 @@
 <h2><%="Prices for #{@product.name}"%></h2>
 
+<table>
+  <thead>
+    <tr>
+      <th>Supermarket</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%@product.supermarkets.each do |market| %>
+      <tr>
+        <td><%= market.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

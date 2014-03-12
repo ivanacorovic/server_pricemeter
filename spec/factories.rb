@@ -14,7 +14,7 @@ FactoryGirl.define do
   	image "smoki.jpeg"
   end
 
-  factory :market do
+  factory :supermarket do
   	sequence(:name) { |n| "market_#{n}"}
   end
 
