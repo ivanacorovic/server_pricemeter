@@ -21,9 +21,9 @@ FactoryGirl.define do
   factory :pricemeasure do |pm|
     product
     supermarket
-    price 5
-    measured_at DateTime.now
-    discount false
+    price {rand(50)}
+    measured_at {DateTime.now}
+    discount true
   end
 
 end

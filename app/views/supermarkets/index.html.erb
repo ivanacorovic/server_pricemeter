@@ -1,0 +1,33 @@
+<h2><%="Discounts!!!"%></h2>
+<div><%= image_tag "discount.jpeg"%></div>
+<table>
+  <thead>
+    <tr>
+      <th>Supermarket</th>
+    </tr>
+  </thead>
+
+  <tbody>
+     <tr>
+      <%@supermarkets.each do |market| %>
+          <td>
+            <div>
+              <h4><%= market.name %></h4>
+              <ul>
+                <% get_products_on_sale(market.pricemeasures).each do |pm| %>  
+                  <li>
+                    <span><%= pm.product.name %></span>
+                    <span> <%= pm.price %></span>
+                   
+                  </li>
+                <% end%>
+              </ul>
+          </div>
+        </td>
+      <% end %>
+    </tr>
+   
+  </tbody>
+     
+</table>
+<br>

@@ -1,7 +1,7 @@
 class SupermarketsController < ApplicationController
 
 	def index
-		Supermarket.all
+		@supermarkets=Supermarket.all
 	end
 
 	def show

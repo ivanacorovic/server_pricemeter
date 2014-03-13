@@ -10,5 +10,4 @@ class ProductsController < ApplicationController
 		@pricemeasures=@product.pricemeasures
 	end
 
-
 end
