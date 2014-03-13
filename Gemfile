@@ -9,6 +9,7 @@ gem 'devise'
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'awesome_print'
 end
 
 group :test do

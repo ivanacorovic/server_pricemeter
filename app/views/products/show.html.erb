@@ -1,5 +1,5 @@
 <h2><%="Prices for #{@product.name}"%></h2>
-
+<div><%= image_tag @product.image%></div>
 <table>
   <thead>
     <tr>
@@ -8,11 +8,22 @@
   </thead>
 
   <tbody>
-    <%@product.supermarkets.each do |market| %>
-      <tr>
-        <td><%= market.name %></td>
-      </tr>
-    <% end %>
+     <tr>
+      <%@supermarkets.each do |market| %>
+        <td>
+          <div>
+            <h4><%= market.name %></h4>
+              <ul>
+                <% get_prices(market, @pricemeasures).each do |pm| %>  
+                  <li><%= pm.price %></li>
+                <% end%>
+               </ul>
+          </div>
+        </td>
+      <% end %>
+    </tr>
+   
   </tbody>
+     
 </table>
 <br>

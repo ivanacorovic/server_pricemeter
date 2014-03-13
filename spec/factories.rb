@@ -18,4 +18,12 @@ FactoryGirl.define do
   	sequence(:name) { |n| "market_#{n}"}
   end
 
+  factory :pricemeasure do |pm|
+    product
+    supermarket
+    price 5
+    measured_at DateTime.now
+    discount false
+  end
+
 end

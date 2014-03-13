@@ -11,19 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140312103010) do
+ActiveRecord::Schema.define(version: 20140313125218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "price_meters", force: true do |t|
-    t.integer  "product_id"
-    t.integer  "supermarket_id"
+  create_table "pricemeasures", force: true do |t|
     t.decimal  "price"
     t.datetime "measured_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "product_id"
+    t.integer  "supermarket_id"
+    t.boolean  "discount"
   end
+
+  add_index "pricemeasures", ["product_id"], name: "index_pricemeasures_on_product_id", using: :btree
+  add_index "pricemeasures", ["supermarket_id"], name: "index_pricemeasures_on_supermarket_id", using: :btree
 
   create_table "products", force: true do |t|
     t.string   "name"

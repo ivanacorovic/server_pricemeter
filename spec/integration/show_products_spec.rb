@@ -2,10 +2,11 @@ require 'spec_helper'
 
 	feature 'Displaying individual products' do
 		scenario 'When a user clicks DETAIL' do
-			@products = FactoryGirl.create_list(:product, 10)
+			@product = FactoryGirl.create(:product)
+			@supermarket = FactoryGirl.create(:supermarket)
+			@pricemeasure =FactoryGirl.create(:pricemeasure, product: @product, supermarket: @supermarket)
 			visit products_path
-			click_link("Details#{@products.first.id}")
-			#expect(page).to have_css('h1', text: "Products")
-			expect(page).to have_css('h2', text: "Prices for #{@products.first.name}")
+			click_link("Details#{@product.id}")
+			expect(page).to have_css('td', count: 1)
 		end
 	end
