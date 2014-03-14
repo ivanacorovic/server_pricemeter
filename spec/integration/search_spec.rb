@@ -6,7 +6,6 @@ require 'spec_helper'
 			visit products_path
 			fill_in('search', with: @products.first.name)
 			click_on ('Search')
-			expect(page).to have_css('td', text: @products.first.name)
-			expect(page).to have_css('tr', count: 2)
+			expect(page).to have_css('.product', count: 1)
 		end
 	end

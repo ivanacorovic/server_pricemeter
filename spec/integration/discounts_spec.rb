@@ -10,6 +10,6 @@ require 'spec_helper'
 			end
 			visit root_path
 			click_link('Discounts')
-			expect(page).to have_css('h2', text: "Discounts!!!")
+			expect(page).to have_css('.title', text: "Discounts!!!")
 		end
 	end

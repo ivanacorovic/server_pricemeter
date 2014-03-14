@@ -7,6 +7,6 @@ require 'spec_helper'
 			@pricemeasure =FactoryGirl.create(:pricemeasure, product: @product, supermarket: @supermarket)
 			visit products_path
 			click_link("Details#{@product.id}")
-			expect(page).to have_css('td', count: 1)
+			expect(page).to have_css('.product', count: 1)
 		end
 	end

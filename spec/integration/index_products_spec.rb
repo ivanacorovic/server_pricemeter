@@ -6,6 +6,6 @@ require 'spec_helper'
 			visit root_path
 			click_link ('Show Products')
 			#expect(page).to have_css('h1', text: "Products")
-			expect(page).to have_css('tr', :count=> 11)
+			expect(page).to have_css('.product', :count=> 10)
 		end
 	end

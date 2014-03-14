@@ -9,5 +9,5 @@ class Product < ActiveRecord::Base
 			find(:all)
 		end
 	end
-	
+
 end
