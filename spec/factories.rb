@@ -10,7 +10,7 @@ FactoryGirl.define do
   end
 
   factory :product do
-  	sequence(:name) { |n| "product_#{n}"}
+  	sequence(:name) { |n| "product_#{n}lala"}
   	image "smoki.jpeg"
   end
 
@@ -18,12 +18,12 @@ FactoryGirl.define do
   	sequence(:name) { |n| "market_#{n}"}
   end
 
-  factory :pricemeasure do |pm|
-    product
-    supermarket
-    price {rand(50)}
+  factory :pricemeasure do
+    price {rand(50.00)}
     measured_at {DateTime.now}
     discount true
+    product
+    supermarket
   end
 
 end

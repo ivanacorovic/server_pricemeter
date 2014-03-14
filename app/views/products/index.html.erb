@@ -1,5 +1,7 @@
 <h1>Products</h1>
 
+<%=render 'search_products'%>
+
 <table>
   <thead>
     <tr>
@@ -13,7 +15,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= image_tag product.image%></td>
+        <td><%= image_tag product.image, size: "50x50"%></td>
         <td><%=link_to "Details",product_path(product), id: "Details#{product.id}"%></td>
       </tr>
     <% end %>

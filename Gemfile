@@ -6,7 +6,7 @@ gem 'rails', '4.0.3'
 gem 'pg'
 gem 'high_voltage', '~> 2.1.0'
 gem 'devise'
-
+gem 'faker', '1.1.2'
 group :test, :development do
   gem 'rspec-rails'
   gem 'awesome_print'
