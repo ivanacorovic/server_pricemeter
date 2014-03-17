@@ -1,5 +1,7 @@
 class SuggestionsController < ApplicationController
 
+	before_filter :authenticate_user!
+	
 	def index
 		@suggestions = Suggestion.all
 	end
