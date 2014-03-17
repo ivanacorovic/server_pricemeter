@@ -11,7 +11,7 @@ FactoryGirl.define do
 
   factory :product do
   	sequence(:name) { |n| "product_#{n}lala"}
-  	image "smoki.jpeg"
+  	image_file_name "smoki.jpeg"
   end
 
   factory :supermarket do

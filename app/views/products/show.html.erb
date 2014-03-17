@@ -1,5 +1,5 @@
 <h2><%="Prices for #{@product.name}"%></h2>
-<div><%= image_tag @product.image%></div>
+<div><%= image_tag @product.image.url(:thumb) %></div>
 <table>
   <thead>
     <tr>

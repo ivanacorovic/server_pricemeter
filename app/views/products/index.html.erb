@@ -1,23 +1,29 @@
 <h1>Products</h1>
 
-<%=render 'search_products'%>
+  <%=render 'search_products'%>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Image</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr class="product">
-        <td><%= product.name %></td>
-        <td><%= image_tag product.image, size: "50x50"%></td>
-        <td><%=link_to "Details",product_path(product), id: "Details#{product.id}"%></td>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Image</th>
+        <th></th>
       </tr>
+    </thead>
+  <%if @products.empty?%>
+    <%=form_for @suggestion do |f|%> 
+      <%=f.hidden_field :name %>
+      <%=f.submit "Request product to be added", :name => nil %>
+    <%end%>
+  <%else%>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr class="product">
+          <td><%= product.name %></td>
+          <td><%=image_tag product.image.url(:thumb)%></td>
+          <td><%=link_to "Details",product_path(product), id: "Details#{product.id}"%></td>
+        </tr>
+      <%end%>
     <% end %>
   </tbody>
 </table>

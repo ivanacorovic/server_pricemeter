@@ -1,0 +1,10 @@
+<h2> Add new product </h2>
+
+<%= form_for @product do |f| %>
+  <% %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br/>
+  <%= f.file_field :image %><br />
+  <%= f.submit "Add product" %>
+
+<% end %>
