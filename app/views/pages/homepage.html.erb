@@ -5,8 +5,10 @@
 <ul>
 <% if user_signed_in? %>
   <li>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "logout") %> 
-    
+  <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "logout") %>  
+  </li>
+  <li>
+  <%= link_to('Create Shopping List', carts_path,  class: "shopping")%> 
   </li>
 <% else %>
   <li>

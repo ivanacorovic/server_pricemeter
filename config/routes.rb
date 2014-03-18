@@ -7,7 +7,8 @@ Pricemeter::Application.routes.draw do
   resources :products
   resources :users
   resources :supermarkets, only: [:index]
-  #resources :suggestions
+  resources :lists
+  resources :carts
 
   resources :suggestions do
     member do

@@ -26,4 +26,14 @@ FactoryGirl.define do
     supermarket
   end
 
+  factory :list do
+    sequence(:name) { |n| "list_#{n}"}
+  end
+
+  factory :cart do
+    product
+    user
+    list
+  end
+
 end
