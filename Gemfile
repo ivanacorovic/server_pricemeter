@@ -8,6 +8,7 @@ gem 'high_voltage', '~> 2.1.0'
 gem 'devise'
 gem 'faker', '1.1.2'
 gem "paperclip", "~> 4.1"
+gem 'activeadmin', github: 'gregbell/active_admin'
 
 group :test, :development do
   gem 'rspec-rails'
