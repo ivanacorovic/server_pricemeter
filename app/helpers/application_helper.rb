@@ -12,4 +12,13 @@ module ApplicationHelper
 			@products = supermarket.products
 	end
 
+	def already_in_the_list(product, list, user)
+		@carts= Cart.all
+		if @carts
+			@carts.select {|c| c.product_id == product.id && c.list_id == list.id &&
+				 c.user_id == user.id}
+		end
+		
+	end
+
 end

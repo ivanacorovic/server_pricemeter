@@ -8,7 +8,14 @@ Pricemeter::Application.routes.draw do
   resources :users
   resources :supermarkets, only: [:index]
   resources :lists
-  resources :carts
+  resources :carts, except: :destroy do
+    member do
+       get "calculate"
+     end
+    collection do
+      delete "destroy"
+    end
+  end
 
   resources :suggestions do
     member do

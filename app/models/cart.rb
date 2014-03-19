@@ -7,4 +7,5 @@ class Cart < ActiveRecord::Base
 	validates :user, presence: true
 	validates :list, presence: true
 
+	validates_uniqueness_of :id, :scope => [:user_id, :product_id, :list_id]
 end

@@ -15,12 +15,12 @@ namespace :db do
         end
       end
 
-      @users.each do |user|
-        @lists.each do |list| 
-          @products.each do |product| 
-            FactoryGirl.create(:cart, product: product, list: list, user: user)
-          end
-        end
-      end
+      # @users.each do |user|
+      #   @lists.each do |list| 
+      #     @products.each do |product| 
+      #       FactoryGirl.create(:cart, product: product, list: list, user: user)
+      #     end
+      #   end
+      # end
     end
 end
