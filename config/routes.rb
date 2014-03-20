@@ -13,7 +13,7 @@ Pricemeter::Application.routes.draw do
        get "calculate"
      end
     collection do
-      delete "destroy"
+      delete "destroy", as: 'destroy' 
     end
   end
 
