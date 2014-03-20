@@ -4,12 +4,13 @@
   <div class="span4">
 
 	Choose the list:
-	<table><tr>
-
-	<% @lists.each do |l| %>
-	  <td><%= link_to l.name, carts_path(selected_list: l.id) %></td>
-	<% end %> 
-	</tr></table>
+	<table>
+    <tr>
+    	<% @lists.each do |l| %>
+    	  <td><%= link_to l.name, carts_path(selected_list: l.id) %></td>
+    	<% end %> 
+	 </tr>
+  </table>
 
 	<h4>Products will be added to your <%=@list_selected.name%><h4>
 	<ul>
@@ -19,49 +20,47 @@
      	 
       <%end%>
 	</ul>
-  	</p>
-
+  <%=link_to " Show me the prices", calculate_carts_path(products: @selected_products), id: "prices"%>
 	</div>
-	 <div class="span8">
 
+	<div class="span8">
 		<h1>Products</h1>
+    <%=render 'products/search_products'%>
 
-  <%=render 'products/search_products'%>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th></th>
-      </tr>
-    </thead>
-  <%if @products.empty?%>
-    <%=form_for @suggestion do |f|%> 
-      <%=f.hidden_field :name %>
-      <%=f.submit "Request product to be added", :name => nil %>
-    <%end%>
-  <%else%>
-    <tbody>
-      <% @products.each do |product| %>
-        <tr class="product">
-          <td><%= product.name %></td>
-          
-          <td> 
-          	<%if already_in_the_list(product, @list_selected, current_user).empty?%>
-          	  <%=form_tag carts_path, method: 'post' do %> 
-          	    <%=hidden_field_tag :product_id, product.id %>
-          	  	<%=hidden_field_tag :list_id, @list_selected.id%>
-          	  	<%=hidden_field_tag :user_id, current_user.id%>
-			       	  <%=submit_tag "+", id: "Submit#{product.id}"%>
-        			<%end%>
-        		<%end%>
-          </td>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
         </tr>
+      </thead>
+    <%if @products.empty?%>
+      <%=form_for @suggestion do |f|%> 
+        <%=f.hidden_field :name %>
+        <%=f.submit "Request product to be added", :name => nil %>
       <%end%>
-    <% end %>
-  </tbody>
-</table>
-<br>
+    <%else%>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr class="product">
+            <td><%= product.name %></td>
+            
+            <td> 
+            	<%if already_in_the_list(product, @list_selected, current_user).empty?%>
+            	  <%=form_tag carts_path, method: 'post' do %> 
+            	    <%=hidden_field_tag :product_id, product.id %>
+            	  	<%=hidden_field_tag :list_id, @list_selected.id%>
+            	  	<%=hidden_field_tag :user_id, current_user.id%>
+  			       	  <%=submit_tag "+", id: "Submit#{product.id}"%>
+          			<%end%>
+          		<%end%>
+            </td>
+          </tr>
+        <%end%>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
 
 		</td>
 	</tr>

@@ -18,6 +18,8 @@ before_filter :authenticate_user!, only: [:new, :edit, :create]
     @list_selected.carts.where(:user_id == current_user.id).each do |cart|
       @selected_products << cart.product
     end
+
+    @suggestion = Suggestion.new(name: params[:search])
 	end
  
 	def new
@@ -31,6 +33,12 @@ before_filter :authenticate_user!, only: [:new, :edit, :create]
 
 
 	def calculate
+		@supermarkets = Supermarket.all
+		@prices = Pricemeasure.all
+		@selected_products = params[:products]
+		# params[:products].each do |p|
+		# 	@selected_products << p
+		# end
 	end
 
 	def destroy
