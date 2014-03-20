@@ -7,10 +7,11 @@ ActiveAdmin.register Suggestion do
     end
   end
 
-  # controller do
-  #   skip_before_filter :authenticate_user!
-  # end
-
+	controller do
+	  def permitted_params
+	      params.permit(suggeston: [:name])
+	    end
+	end
  
 
 end
