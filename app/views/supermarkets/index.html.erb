@@ -14,13 +14,19 @@
             <div>
               <h4><%= market.name %></h4>
               <ul>
-                <% get_products_on_sale(market.pricemeasures).each do |pm| %>  
-                  <li>
-                    <span><%= pm.product.name %></span>
-                    <span> <%= pm.price %></span>
-                   
-                  </li>
-                <% end%>
+                <%if !get_products_on_sale(market.pricemeasures).empty?%> 
+                    <% market.pricemeasures.each do |pm| %>
+                      
+                      <%if !pm.product.nil?%>
+                        <li>
+                          <span><%= pm.product.name %></span>
+                          <span> <%= pm.price %></span>
+                        </li>
+                      <%end%>
+                       
+                      
+                    <%end%>
+                  <%end%>
               </ul>
           </div>
         </td>
@@ -28,6 +34,4 @@
     </tr>
    
   </tbody>
-     
 </table>
-<br>
