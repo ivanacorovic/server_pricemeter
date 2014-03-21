@@ -1,4 +1,4 @@
-class Cart < ActiveRecord::Base
+class Listitem < ActiveRecord::Base
 
 	belongs_to :product
 	belongs_to :list

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318140951) do
+ActiveRecord::Schema.define(version: 20140321074317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140318140951) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "carts", force: true do |t|
+  create_table "listitems", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -57,9 +57,9 @@ ActiveRecord::Schema.define(version: 20140318140951) do
     t.integer  "product_id"
   end
 
-  add_index "carts", ["list_id"], name: "index_carts_on_list_id", using: :btree
-  add_index "carts", ["product_id"], name: "index_carts_on_product_id", using: :btree
-  add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
+  add_index "listitems", ["list_id"], name: "index_listitems_on_list_id", using: :btree
+  add_index "listitems", ["product_id"], name: "index_listitems_on_product_id", using: :btree
+  add_index "listitems", ["user_id"], name: "index_listitems_on_user_id", using: :btree
 
   create_table "lists", force: true do |t|
     t.string   "name"

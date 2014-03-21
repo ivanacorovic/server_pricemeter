@@ -1,7 +1,7 @@
-class CartsController < ApplicationController
+class ListitemsController < ApplicationController
 before_filter :authenticate_user!, only: [:new, :edit, :create]
 	def index
-		@carts = Cart.all
+		@listitems = Listitem.all
 		@lists = List.all
 		if @lists
 			if params[:selected_list] 
@@ -15,20 +15,20 @@ before_filter :authenticate_user!, only: [:new, :edit, :create]
 
     @products = Product.search(params[:search])
     @selected_products =[]
-    @list_selected.carts.where(:user_id == current_user.id).each do |cart|
-      @selected_products << cart.product
+    @list_selected.listitems.where(:user_id == current_user.id).each do |listitem|
+      @selected_products << listitem.product
     end
 
     @suggestion = Suggestion.new(name: params[:search])
 	end
  
 	def new
-		@cart = Cart.new
+		@listitem = Listitem.new
 	end
 
 	def create
-		@cart = Cart.create(cart_params)
-		redirect_to carts_path 
+		@listitem = Listitem.create(listitem_params)
+		redirect_to listitems_path 
 	end
 
 
@@ -42,11 +42,11 @@ before_filter :authenticate_user!, only: [:new, :edit, :create]
 	end
 
 	def destroy
-		@cart=Cart.where(user_id: params[:user_id], product_id: params[:product_id], 
+		@listitem=Listitem.where(user_id: params[:user_id], product_id: params[:product_id], 
 			list_id: params[:list_id])
 
-		if !@cart.empty? && @cart.first.destroy
-			redirect_to carts_path
+		if !@listitem.empty? && @listitem.first.destroy
+			redirect_to listitems_path
 		end
 
 	end
@@ -54,9 +54,9 @@ before_filter :authenticate_user!, only: [:new, :edit, :create]
 
  private
 
-    def cart_params
+    def listitem_params
       params.permit(:user_id, :product_id, :list_id)
-    #  params.fetch(:cart).permit! if params[:cart]
+    #  params.fetch(:listitem).permit! if params[:listitem]
     end
 
 end

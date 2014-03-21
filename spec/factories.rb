@@ -30,7 +30,7 @@ FactoryGirl.define do
     sequence(:name) { |n| "list_#{n}"}
   end
 
-  factory :cart do
+  factory :listitem do
     product
     user
     list

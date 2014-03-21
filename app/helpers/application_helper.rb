@@ -15,9 +15,9 @@ module ApplicationHelper
 	end
 
 	def already_in_the_list(product, list, user)
-		@carts= Cart.all
-		if @carts
-			@carts.select {|c| c.product_id == product.id && c.list_id == list.id &&
+		@listitems= Listitem.all
+		if @listitems
+			@listitems.select {|c| c.product_id == product.id && c.list_id == list.id &&
 				 c.user_id == user.id}
 		end	
 	end
@@ -29,10 +29,10 @@ module ApplicationHelper
 		end
 	end
 
-	def selected_products(selected_products, all_products, user, list, carts)
-    carts.select{|c| c.user_id == user.id && c.list_id == list.id} 
-    carts.each do |c|
-    	selected_products << carts.product_id
+	def selected_products(selected_products, all_products, user, list, listitems)
+    listitems.select{|c| c.user_id == user.id && c.list_id == list.id} 
+    listitems.each do |c|
+    	selected_products << listitems.product_id
     end
     selected_products.each do |sp|
   	  products.select{|p| p.id == sp}
