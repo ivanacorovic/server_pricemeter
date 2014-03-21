@@ -1,29 +1,18 @@
-<h1 class="shopping">Shopping list</h1>
+<div class="row">
 
-<div class="col-md-3">
-  <div class="list-group">
+  <div class="col-md-2">
+  <%=render 'choose_the_list'%>
+  <h4 class="notification">Products will be added to your <%=@list_selected.name%></h4>
+  </div>
+  <div class="col-md-5">
+    <h1 class="shopping">Shopping list</h1>
+    <%=render 'product_list', object: @selected_products%>
 
-	Choose the list:
-	<table>
-    <tr>
-    	<% @lists.each do |l| %>
-    	  <td><%= link_to l.name, listitems_path(selected_list: l.id), class: "list-group-item"%></td>
-    	<% end %> 
-	 </tr>
-  </table>
+    <%=link_to " Show me the prices", calculate_listitems_path(products: @selected_products), id: "prices"%>
+  </div>
 
-	<h4>Products will be added to your <%=@list_selected.name%><h4>
-	<ul>
-		<%@selected_products.each do |p| %>
-			<li class="enlist"><%=p.name%> <%=link_to " [-]", destroy_listitems_path(product_id: p.id, list_id: @list_selected.id, user_id: current_user.id), method: 'delete',
-           id: "Remove#{p.id}"%></li>
-    <%end%>
-	</ul>
-  <%=link_to " Show me the prices", calculate_listitems_path(products: @selected_products), id: "prices"%>
-	</div>
-
-	<div class="span8">
-		<h1>Products</h1>
+  <div class="col-md-4">
+  	<h1>Products</h1>
     <%=render 'products/search_products'%>
     <%if @products.empty?%>
       <%=render partial: 'products/make_a_suggestion', object:  @suggestion%>

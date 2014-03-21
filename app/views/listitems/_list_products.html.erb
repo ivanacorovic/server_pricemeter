@@ -1,26 +1,13 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Image</th>
-    </tr>
-  </thead>
-  <tbody>
-        <% @products.each do |product| %>
-          <tr class="product">
-            <td><%= product.name %></td>
-            
-            <td> 
-              <%if already_in_the_list(product, @list_selected, current_user).empty?%>
-                <%=form_tag listitems_path, method: 'post' do %> 
-                  <%=hidden_field_tag :product_id, product.id %>
-                  <%=hidden_field_tag :list_id, @list_selected.id%>
-                  <%=hidden_field_tag :user_id, current_user.id%>
-                  <%=submit_tag "+", id: "Submit#{product.id}"%>
-                <%end%>
-              <%end%>
-            </td>
-          </tr>
-        <%end%>
-    </tbody>
-</table>
+
+<% @products.each do |product| %>
+  <li class="list-group-item"><%= product.name %>
+    <%if already_in_the_list(product, @list_selected, current_user).empty?%>
+      <%=form_tag listitems_path, method: 'post' do %> 
+        <%=hidden_field_tag :product_id, product.id %>
+        <%=hidden_field_tag :list_id, @list_selected.id%>
+        <%=hidden_field_tag :user_id, current_user.id%>
+        <%=submit_tag "+", id: "Submit#{product.id}"%>
+      <%end%>
+    <%end%>
+  </li>
+<%end%>
