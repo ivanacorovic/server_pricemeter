@@ -16,7 +16,7 @@
 				<li class="active"><a href="/products">Show Products</a></li>
 				<li><a href="/supermarkets">Discounts</a></li>
 				<% if user_signed_in? %>
-							<li><a href="/listitems">Create a shopping list!</a></li>
+							<li><a href="/listitems">Create shopping list!</a></li>
 				<% end %>
 			</ul>
 			
@@ -25,10 +25,10 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 							<% if user_signed_in? %>
-							<li><a data-method="delete" href="/users/sign_out">Sign out</a></li>
+							<li><a data-method="delete" class="logout" href="/users/sign_out">Sign out</a></li>
 							<% end %>
 							<% if !user_signed_in? %>
-							<li><a href="/users/sign_in/">Sign in</a></li>
+							<li><a href="/users/sign_in/" class="login" >Sign in</a></li>
 							<li><a href="/users/sign_up/">Register</a></li>
 							<% end %>
 					</ul>
