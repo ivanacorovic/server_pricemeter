@@ -8,4 +8,6 @@ class Listitem < ActiveRecord::Base
 	validates :list, presence: true
 
 	validates_uniqueness_of :id, :scope => [:user_id, :product_id, :list_id]
+
+	
 end

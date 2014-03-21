@@ -20,6 +20,7 @@ before_filter :authenticate_user!, only: [:new, :edit, :create]
     end
 
     @suggestion = Suggestion.new(name: params[:search])
+    
 	end
  
 	def new
@@ -36,9 +37,6 @@ before_filter :authenticate_user!, only: [:new, :edit, :create]
 		@supermarkets = Supermarket.all
 		@prices = Pricemeasure.all
 		@selected_products = params[:products]
-		# params[:products].each do |p|
-		# 	@selected_products << p
-		# end
 	end
 
 	def destroy

@@ -22,11 +22,9 @@ module ApplicationHelper
 		end	
 	end
 
-	def prices_from_the_list(market, product_id)
-		@prices = Pricemeasure.all
-		if @prices
-			@prices.select {|p| p.product_id == product_id && p.supermarket_id == market.id}
-		end
+	def prices_from_the_list(market, products)
+		@prices = Pricemeasure.where("supermarket_id= ? and product_id IN (?)",
+			 market.id,  products)
 	end
 
 	def selected_products(selected_products, all_products, user, list, listitems)

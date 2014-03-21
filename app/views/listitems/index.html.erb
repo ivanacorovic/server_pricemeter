@@ -1,13 +1,13 @@
 <h1 class="shopping">Shopping list</h1>
 
-<div>
-  <div class="span4">
+<div class="col-md-3">
+  <div class="list-group">
 
 	Choose the list:
 	<table>
     <tr>
     	<% @lists.each do |l| %>
-    	  <td><%= link_to l.name, listitems_path(selected_list: l.id) %></td>
+    	  <td><%= link_to l.name, listitems_path(selected_list: l.id), class: "list-group-item"%></td>
     	<% end %> 
 	 </tr>
   </table>
@@ -17,11 +17,9 @@
 		<%@selected_products.each do |p| %>
 			<li class="enlist"><%=p.name%> <%=link_to " [-]", destroy_listitems_path(product_id: p.id, list_id: @list_selected.id, user_id: current_user.id), method: 'delete',
            id: "Remove#{p.id}"%></li>
-     	 
     <%end%>
 	</ul>
-  <%=link_to " Show me the prices", calculate_listitems_path(products:
-       @selected_products), id: "prices"%>
+  <%=link_to " Show me the prices", calculate_listitems_path(products: @selected_products), id: "prices"%>
 	</div>
 
 	<div class="span8">

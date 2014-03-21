@@ -8,6 +8,11 @@ class Pricemeasure < ActiveRecord::Base
 	validates :supermarket, presence: true
 	scope :descending, -> {order('measured_at DESC')}
 
+	def self.total(prices)
+		@total=prices.sum('price')
+	end
+
+
 private
 	def remove_prev_discount
 		if self.discount == true

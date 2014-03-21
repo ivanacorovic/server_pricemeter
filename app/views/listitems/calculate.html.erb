@@ -1,25 +1,21 @@
 <h1 class="prices">Prices</h1>
   <div> 
-		<%total=0.0 %>
 		<%@supermarkets.each do |market| %>
 			<table>
 				<tr>
 					<td><h3><%=market.name%></h3></td>
 				</tr>
-				<%@selected_products.each do |p| %>
-				<%@prices = prices_from_the_list(market, p.to_i)%>
-
+				<%@prices = prices_from_the_list(market, @selected_products)%>
 					<% if !@prices.empty?%>
-						<tr>
-							<td><%=@prices.first.product.name%></td>
-							<td><%=@prices.first.price%></td>
-							<%total=total+@prices.first.price %>
-						</tr>
+						<%@prices.each do |price| %>
+							<tr>
+								<td><%=price.product.name%></td>
+								<td><%=price.price%></td>
+							</tr>
+						<%end%>
  					<%end%>
  					</br>	
-	     	<%end%>
-	   		<tr>
-					<td>Total: <%=total %></td>
+					<td>Total: <%=Pricemeasure.total(@prices) %></td>
 				</tr>
 	    <%end%>
 		</table>
