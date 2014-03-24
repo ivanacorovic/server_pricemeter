@@ -3,15 +3,16 @@ FactoryGirl.define do
     sequence(:email) { |n| "person_#{n}@example.com"}
     password "123456789"
     password_confirmation "123456789"
+  end
 
-    factory :admin do
-      admin true
-    end
+  factory :admin_user do
+    email "admin@example.com"
+    password 'password'
+    password_confirmation 'password'
   end
 
   factory :product do
   	sequence(:name) { |n| "product_#{n}lala"}
-  	image_file_name "smoki.jpeg"
   end
 
   factory :supermarket do

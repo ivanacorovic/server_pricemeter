@@ -4,11 +4,11 @@ class PricemeasuresController < ApplicationController
 		@pricemeasures=Pricemeasure.all
 	end
  
- private
+ 	private
 
-    def supermarket_params
-      params.require(:supermarket).permit(:id, :price, :discount,
-      	 :product_id, :supermarket_id, :measured_at)
-    end
+	def supermarket_params
+	  params.require(:supermarket).permit(:id, :price, :discount,
+	  	 :product_id, :supermarket_id, :measured_at)
+	end
 
 end

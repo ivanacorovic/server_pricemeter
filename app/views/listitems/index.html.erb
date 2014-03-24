@@ -6,7 +6,7 @@
   </div>
   <div class="col-md-5">
     <h1 class="shopping">Shopping list</h1>
-    <%=render 'product_list', object: @selected_products%>
+    <%=render 'shopping_list', object: @selected_products%>
 
     <%=link_to " Show me the prices", calculate_listitems_path(products: @selected_products), id: "prices"%>
   </div>

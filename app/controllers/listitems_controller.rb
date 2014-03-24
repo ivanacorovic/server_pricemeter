@@ -1,3 +1,6 @@
+
+require 'will_paginate/array'
+
 class ListitemsController < ApplicationController
 before_filter :authenticate_user!, only: [:new, :edit, :create]
 	def index
@@ -29,7 +32,7 @@ before_filter :authenticate_user!, only: [:new, :edit, :create]
 
 	def create
 		@listitem = Listitem.create(listitem_params)
-		redirect_to listitems_path 
+		redirect_to :back
 	end
 
 
@@ -44,17 +47,17 @@ before_filter :authenticate_user!, only: [:new, :edit, :create]
 			list_id: params[:list_id])
 
 		if !@listitem.empty? && @listitem.first.destroy
-			redirect_to listitems_path
+			redirect_to :back
 		end
 
 	end
 
 
- private
+	private
 
-    def listitem_params
-      params.permit(:user_id, :product_id, :list_id)
-    #  params.fetch(:listitem).permit! if params[:listitem]
-    end
+	def listitem_params
+	  params.permit(:user_id, :product_id, :list_id)
+	#  params.fetch(:listitem).permit! if params[:listitem]
+	end
 
 end

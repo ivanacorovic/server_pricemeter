@@ -16,8 +16,8 @@ require 'spec_helper'
 			sign_in
 			click_link("Create shopping list!")
 			click_on("Submit#{@products.first.id}")
-			expect(page).to have_css('.list-group-item', count: 1)
+			expect(page).to have_css('#item', count: 1)
 			click_on("Remove#{@products.first.id}")
-			expect(page).to have_css('.list-group-item', count: 0)
+			expect(page).to have_css('#item', count: 0)
 		end
 	end

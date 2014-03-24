@@ -1,0 +1,17 @@
+  <div>
+  <ul class="list-group-item">
+    <h4><%= @market.name %></h4>
+  </div>
+  <div>
+    <%if !get_products_on_sale(@market.pricemeasures).empty?%> 
+      <% @market.pricemeasures.each do |pm| %>  
+        <%if !pm.product.nil?%>
+          <li id="discount", class="list-group-item">
+            <span align='center'><%= pm.product.name %></span>
+            <span class="badge"> <%= pm.price %> &#8364</span>
+          </li>
+        <%end%>       
+      <%end%>
+    <%end%>
+  </ul>
+</div>

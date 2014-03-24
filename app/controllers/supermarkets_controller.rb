@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class SupermarketsController < ApplicationController
 
 	def index
@@ -8,11 +10,11 @@ class SupermarketsController < ApplicationController
 		@supermarket=Supermarket.find(params[:id])
 	end
 
- private
+  private
 
-    def supermarket_params
-      params.require(:supermarket).permit(:name, :id)
-    end
+  def supermarket_params
+    params.require(:supermarket).permit(:name, :id)
+  end
 
 
 end

@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class ProductsController < ApplicationController
 before_filter :authenticate_user!, only: [:new, :edit, :create]
 

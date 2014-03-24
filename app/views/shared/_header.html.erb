@@ -1,39 +1,51 @@
 <nav class="navbar navbar-default" role="navigation">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Price Meter</a>
-		</div>
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">Price Meter</a>
+	</div>
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="/products">Show Products</a></li>
-				<li><a href="/supermarkets">Discounts</a></li>
-				<% if user_signed_in? %>
-							<li><a href="/listitems">Create shopping list!</a></li>
-				<% end %>
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav">
+			<% if current_page? products_path %>
+	      <li class="active"><a href="/products">Show Products</a></li>
+	    <% else%>
+	     <li class><a href="/products">Show Products</a></li>
+	  	<% end %> 
+	  	<% if current_page? supermarkets_path %>
+	      <li class="active"><a href="/supermarkets">Discounts</a></li>
+	    <% else%>
+	      <li><a href="/supermarkets">Discounts</a></li>
+	  	<% end %> 
+	  	<% if user_signed_in? %>
+		  	<% if current_page? listitems_path %>
+		      <li class="active"><a href="/listitems">Create shopping list!</a></li>
+		    <% else%>
+		      <li><a href="/listitems">Create shopping list!</a></li>
+		  	<% end %> 				
+			<% end %>
+		</ul>
+		
+		<ul class="nav navbar-nav navbar-right">
+			<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
+			<ul class="dropdown-menu">
+					<% if user_signed_in? %>
+					<li><a data-method="delete" class="logout" href="/users/sign_out">Sign out</a></li>
+					<% end %>
+					<% if !user_signed_in? %>
+					<li><a href="/users/sign_in/" class="login" >Sign in</a></li>
+					<li><a href="/users/sign_up/">Register</a></li>
+					<% end %>
 			</ul>
-			
-			<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
-					<ul class="dropdown-menu">
-							<% if user_signed_in? %>
-							<li><a data-method="delete" class="logout" href="/users/sign_out">Sign out</a></li>
-							<% end %>
-							<% if !user_signed_in? %>
-							<li><a href="/users/sign_in/" class="login" >Sign in</a></li>
-							<li><a href="/users/sign_up/">Register</a></li>
-							<% end %>
-					</ul>
-					</li>
-			</ul>
+			</li>
+		</ul>
 
-			</div><!-- /.navbar-collapse -->
-		</nav>
+	</div><!-- /.navbar-collapse -->
+</nav>

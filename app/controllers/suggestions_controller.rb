@@ -22,11 +22,11 @@ class SuggestionsController < ApplicationController
 		@suggestion.destroy
 	end
 
- private
+ 	private
 
-    def suggestion_params
-      params.require(:suggestion).permit(:name)
-    end
+  def suggestion_params
+    params.require(:suggestion).permit(:name)
+  end
 
 
 end

@@ -13,7 +13,8 @@ class Pricemeasure < ActiveRecord::Base
 	end
 
 
-private
+	private
+	
 	def remove_prev_discount
 		if self.discount == true
 			prices=Pricemeasure.where(product_id: self.product_id, 
