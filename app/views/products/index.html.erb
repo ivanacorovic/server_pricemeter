@@ -1,6 +1,5 @@
 <h1>Products</h1>
-
-  <%=render 'search_products'%>
+ 	<%=render 'search_products'%>
   <%if @products.empty?%>
     <%=render partial: 'make_a_suggestion', object:  @suggestion%>
   <%else%>

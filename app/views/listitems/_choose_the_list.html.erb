@@ -1,18 +1,17 @@
-  <div class="list-group">
-	<%@list_selected=@lists.first%>
-	<h4>Choose the list:</h4>
-  	<% @lists.each do |l| %>
-
-	  	<% if current_page? listitems_path(selected_list: l.id) %>
-	      <%= link_to listitems_path(selected_list: l.id), class: "list-group-item active" do%>
-	        <%=l.name%>
-	      <% end %>
-	    <% else%>
-	  	  <%= link_to listitems_path(selected_list: l.id), class: "list-group-item" do%>
-	        <%=l.name%>
-	      <% end %>
-	  	<% end %> 
-	  <% end %> 
-  </div>
+<div class="list-group">
+<%@list_selected=@lists.first%>
+<h4>Choose the list:</h4>
+	<% @lists.each do |l| %>
+  	<% if current_page? listitems_path(selected_list: l.id) %>
+      <%= link_to listitems_path(selected_list: l.id), class: "list-group-item active" do%>
+        <%=l.name%>
+      <% end %>
+    <% else%>
+  	  <%= link_to listitems_path(selected_list: l.id), class: "list-group-item" do%>
+        <%=l.name%>
+      <% end %>
+  	<% end %> 
+  <% end %> 
+</div>
 
 

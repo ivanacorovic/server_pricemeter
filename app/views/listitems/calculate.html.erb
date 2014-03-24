@@ -1,24 +1,11 @@
 <h1 class="prices">Prices</h1>
-  <div> 
-		<%@supermarkets.each do |market| %>
-			<table>
-				<tr>
-					<td><h3><%=market.name%></h3></td>
-				</tr>
-				<%@prices = prices_from_the_list(market, @selected_products)%>
-					<% if !@prices.empty?%>
-						<%@prices.each do |price| %>
-							<tr>
-								<td><%=price.product.name%></td>
-								<td><%=price.price%></td>
-							</tr>
-						<%end%>
- 					<%end%>
- 					</br>	
-					<td>Total: <%=Pricemeasure.total(@prices) %></td>
-				</tr>
-	    <%end%>
-		</table>
-	</div>
+<div class="col-md-12">
+	<%@supermarkets.each do |market| %>
+	  <div class="col-md-4"> 
+			<%@market = market %>
+			<%=render 'shopping_list_per_market', locals: {market: @market}%>
+		</div>
+	<%end%>	
+</div>
 
   

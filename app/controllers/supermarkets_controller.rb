@@ -16,5 +16,4 @@ class SupermarketsController < ApplicationController
     params.require(:supermarket).permit(:name, :id)
   end
 
-
 end

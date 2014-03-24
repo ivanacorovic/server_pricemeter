@@ -1,29 +1,16 @@
 <h2><%="Prices for #{@product.name}"%></h2>
-<div><%= image_tag @product.image.url(:thumb) %></div>
-<table>
-  <thead>
-    <tr>
-      <th>Supermarket</th>
-    </tr>
-  </thead>
-
-  <tbody>
-     <tr class="product">
-      <% @supermarkets.each do |market| %>
-        <td>
-          <div>
-            <h4><%= market.name %></h4>
-              <ul>
-                <% get_prices(market, @pricemeasures).each do |pm| %>  
-                  <li><%= pm.price %></li>
-                <% end%>
-               </ul>
-          </div>
-        </td>
-      <% end %>
-    </tr>
-   
-  </tbody>
-     
-</table>
-<br>
+<div class="col-md-12">
+  <div class="col-md-3",  id='product'>
+    <%= image_tag @product.image.url(:thumb)%>
+  </div>
+  <% @supermarkets.each do |market| %>
+    <div class="col-md-3">
+      <h4><%= market.name %></h4>
+      <ul>
+        <% get_prices(market, @pricemeasures).each do |pm| %>  
+          <li class="list-group-item"><%= pm.price %></li>
+        <% end%>
+      </ul>
+    </div>
+  <% end %>
+</div>

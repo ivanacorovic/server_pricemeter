@@ -4,8 +4,8 @@ class ProductsController < ApplicationController
 before_filter :authenticate_user!, only: [:new, :edit, :create]
 
 	def index
-		 @products = Product.search(params[:search])
-		 @suggestion = Suggestion.new(name: params[:search])
+		@products = Product.search(params[:search])
+		@suggestion = Suggestion.new(name: params[:search])
 	end
 
 	def show

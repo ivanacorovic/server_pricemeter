@@ -1,8 +1,6 @@
-  <div>
-  <ul class="list-group-item">
-    <h4><%= @market.name %></h4>
-  </div>
-  <div>
+<div>
+  <ul>
+    <h4>In supermarket <%= @market.name %></h4>
     <%if !get_products_on_sale(@market.pricemeasures).empty?%> 
       <% @market.pricemeasures.each do |pm| %>  
         <%if !pm.product.nil?%>

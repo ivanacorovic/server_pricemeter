@@ -11,20 +11,20 @@ module ApplicationHelper
 	end 
 
 	def get_price_measures(supermarket)
-			@products = supermarket.products
+		@products = supermarket.products
 	end
 
 	def already_in_the_list(product, list, user)
 		@listitems= Listitem.all
 		if @listitems
 			@listitems.select {|c| c.product_id == product.id && c.list_id == list.id &&
-				 c.user_id == user.id}
+				c.user_id == user.id}
 		end	
 	end
 
 	def prices_from_the_list(market, products)
 		@prices = Pricemeasure.where("supermarket_id= ? and product_id IN (?)",
-			 market.id,  products)
+			market.id,  products)
 	end
 
 	def selected_products(selected_products, all_products, user, list, listitems)
@@ -35,6 +35,6 @@ module ApplicationHelper
     selected_products.each do |sp|
   	  products.select{|p| p.id == sp}
   	end
-  end
+	end
 
 end

@@ -8,7 +8,7 @@ class PricemeasuresController < ApplicationController
 
 	def supermarket_params
 	  params.require(:supermarket).permit(:id, :price, :discount,
-	  	 :product_id, :supermarket_id, :measured_at)
+	  	:product_id, :supermarket_id, :measured_at)
 	end
 
 end

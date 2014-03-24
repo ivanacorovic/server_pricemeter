@@ -11,8 +11,8 @@ class SuggestionsController < ApplicationController
 	end
 
 	def create
-			@suggestion = Suggestion.create(suggestion_params)
-			redirect_to products_path
+		@suggestion = Suggestion.create(suggestion_params)
+		redirect_to products_path
 	end
 
 	def serve
@@ -27,6 +27,5 @@ class SuggestionsController < ApplicationController
   def suggestion_params
     params.require(:suggestion).permit(:name)
   end
-
 
 end

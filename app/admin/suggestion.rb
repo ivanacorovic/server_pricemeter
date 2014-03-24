@@ -10,7 +10,7 @@ ActiveAdmin.register Suggestion do
 	controller do
 	  def permitted_params
 	      params.permit(suggeston: [:name])
-	    end
+	  end
 	end
  
 

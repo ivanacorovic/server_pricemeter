@@ -3,13 +3,13 @@
 
 
 .input-group-addon {
-background-color: #FFFFFF;
-font-size: 0em;
-border: 0px;
+   background-color: #FFFFFF;
+   font-size: 0em;
+   border: 0px;
 }
 
 .container {
-width: 97%;
+   width: 97%;
 }
 
 .notification {
@@ -20,3 +20,28 @@ h4 {
 	color: blue;
 	text-align: center
 }
+
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+   padding:10px;
+   padding-bottom:60px;
+}
+
+#container {
+   min-height:100%;
+   position:relative;
+}
+
+#header {
+   background:#ff0;
+   padding:10px;
+}
+
+.picture {
+   text-align: center
+
+}
+

@@ -1,9 +1,15 @@
-<div align='center'><%= image_tag "discount.jpeg", size: '700x150'%></div>
-<div class=col-md-12>
-  <%@supermarkets.each do |market| %>
-    <div class=col-md-4>
-      <% @market=market %>
-      <%=render 'discount_at_market', locals: {market: @market}%>
-    </div>
-  <%end %>
+<div class="picture">
+	<%= image_tag "discount.jpeg", size: '700x150'%>
 </div>
+<div class="col-md-12">
+  <%@supermarkets.each do |market| %>
+	  <%@products = market.products.paginate(:page => params[:page], :per_page => 7)%>
+	  <div class="col-md-4">
+	    <% @market = market %>
+	    <br>
+	    <%=render 'discount_at_market', locals: {market: @market}%>
+	  </div>
+	<%end %>
+</div>
+<%=will_paginate @products %>
+

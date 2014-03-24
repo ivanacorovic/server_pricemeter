@@ -1,10 +1,10 @@
-
 require 'will_paginate/array'
 
 class ListitemsController < ApplicationController
-before_filter :authenticate_user!, only: [:new, :edit, :create]
+	before_filter :authenticate_user!, only: [:new, :edit, :create]
+
 	def index
-		@listitems = Listitem.all
+	  @listitems = Listitem.all
 		@lists = List.all
 		if @lists
 			if params[:selected_list] 
@@ -13,17 +13,15 @@ before_filter :authenticate_user!, only: [:new, :edit, :create]
 				@list_selected=List.first
 			end
 		else
-      raise ActionController::RoutingError.new('Forbidden')
-    end
+    	raise ActionController::RoutingError.new('Forbidden')
+		end
 
     @products = Product.search(params[:search])
     @selected_products =[]
     @list_selected.listitems.where(:user_id == current_user.id).each do |listitem|
       @selected_products << listitem.product
     end
-
     @suggestion = Suggestion.new(name: params[:search])
-    
 	end
  
 	def new
@@ -49,7 +47,6 @@ before_filter :authenticate_user!, only: [:new, :edit, :create]
 		if !@listitem.empty? && @listitem.first.destroy
 			redirect_to :back
 		end
-
 	end
 
 

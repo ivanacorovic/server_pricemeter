@@ -11,7 +11,7 @@ ActiveAdmin.register Product do
 	  def permitted_params
 	      params.permit(product: [:name, :image_file_name, 
 	      	:image_content_type, :image_file_size, :image_updated_at])
-	    end
+	  end
 	end
 
 end
