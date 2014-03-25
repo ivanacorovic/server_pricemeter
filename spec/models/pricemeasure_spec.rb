@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Pricemeasure do
-  pending "add some examples to (or delete) #{__FILE__}"
+	it { should belong_to(:product) }
+	it { should belong_to(:supermarket) }
+ 	it { should validate_presence_of(:product) }
+ 	it { should validate_presence_of(:supermarket) }
 end

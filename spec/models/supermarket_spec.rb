@@ -1,5 +1,6 @@
 require 'spec_helper'
 
 describe Supermarket do
-  pending "add some examples to (or delete) #{__FILE__}"
+	it {should have_many(:pricemeasures)}
+	it {should have_many(:products).through(:pricemeasures)}
 end
