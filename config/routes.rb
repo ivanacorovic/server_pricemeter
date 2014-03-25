@@ -3,10 +3,14 @@ Pricemeter::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
-  root to: 'high_voltage/pages#show', id: 'homepage'
+  root to: 'homepage#home'
   resources :products
   resources :users
-  resources :supermarkets, only: [:index]
+  resources :supermarkets, only: [:show] do
+    member do
+      get 'discount'
+    end
+  end
   resources :lists
   resources :listitems, except: :destroy do
     collection do

@@ -8,7 +8,9 @@
       <h4><%= market.name %></h4>
       <ul>
         <% get_prices(market, @pricemeasures).each do |pm| %>  
-          <li class="list-group-item"><%= pm.price %></li>
+          <li class="list-group-item"><%= pm.price %>
+            <span class="badge">&#8364</span>
+          </li>
         <% end%>
       </ul>
     </div>

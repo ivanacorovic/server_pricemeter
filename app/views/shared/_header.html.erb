@@ -7,7 +7,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">Price Meter</a>
+		<a class="navbar-brand" href="/">Price Meter</a>
 	</div>
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,12 +17,7 @@
 	      <li class="active"><a href="/products">Show Products</a></li>
 	    <% else%>
 	     <li class><a href="/products">Show Products</a></li>
-	  	<% end %> 
-	  	<% if current_page? supermarkets_path %>
-	      <li class="active"><a href="/supermarkets">Discounts</a></li>
-	    <% else%>
-	      <li><a href="/supermarkets">Discounts</a></li>
-	  	<% end %> 
+	  	<% end %>  
 	  	<% if user_signed_in? %>
 		  	<% if current_page? listitems_path %>
 		      <li class="active"><a href="/listitems">Create shopping list!</a></li>

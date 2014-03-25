@@ -12,6 +12,9 @@ class Pricemeasure < ActiveRecord::Base
 		@total=prices.sum('price')
 	end
 
+	def self.get_products_on_sale(market)
+		where(supermarket_id: market.id, discount: true, measured_at: 2.week.ago..DateTime.now)
+	end
 
 	private
 	
@@ -24,5 +27,7 @@ class Pricemeasure < ActiveRecord::Base
 			end
 		end
 	end
+
+	
 
 end

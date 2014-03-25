@@ -1,0 +1,11 @@
+<div class=col-md-7>
+  <ul id='discount'>
+    <% @pricemeasures.each do |pm| %>  
+      <li id="discount", class="list-group-item">
+        <span align='center'><%= pm.product.name %></span>
+        <span class="badge"> <%= pm.price %> &#8364</span>
+      </li>       
+    <%end%>
+  </ul>
+</div>
+<%=will_paginate @pricemeasures %>

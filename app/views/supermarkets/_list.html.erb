@@ -1,0 +1,7 @@
+<%@supermarkets.each do |market| %>
+	<li class='list-group-item'>
+		<%=link_to supermarket_path(market.id) do%>
+			<%=market.name %>
+		<%end%>
+	</li>
+<%end%>

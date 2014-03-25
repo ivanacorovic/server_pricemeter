@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Sing in user' do 
+feature 'Sign in user' do 
 	scenario 'with user email and password' do	
  	  sign_in
   	expect(page).to have_css('.logout', text: "Sign out")

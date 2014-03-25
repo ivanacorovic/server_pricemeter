@@ -1,0 +1,18 @@
+<div class="col-md-7">
+  <ul>
+	 	<% @products.each do |product| %>  
+	    <li class="list-group-item">
+	    	<%= product.pricemeasures.first.product.name %>
+	    	<span class="badge">
+	    		<%= product.pricemeasures.first.price %> &#8364
+	    	</span>
+	    </li> 
+		<%end %>
+	</ul>
+</div>
+<div>
+	<%=link_to discount_supermarket_path(@supermarket.id) do%>
+			<%= image_tag "discount.jpeg", size: '300x150'%>
+	<%end%>
+</div>
+<%=will_paginate @products %>
