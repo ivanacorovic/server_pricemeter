@@ -35,21 +35,24 @@ class PricemeasureImport
   def load_imported_pricemeasures
     result = []
     spreadsheet = open_spreadsheet
-	  header = spreadsheet.row(1)
-	  (2..spreadsheet.last_row).each do |i|
-	    row = Hash[[header, spreadsheet.row(i)].transpose]
-	    pricemeasure = Pricemeasure.find_by_id(row["id"]) || Pricemeasure.new
+    if !spreadsheet.empty?(1, 1)
+  	 header = spreadsheet.row(1)
+     
+  	  (2..spreadsheet.last_row).each do |i|
+  	    row = Hash[[header, spreadsheet.row(i)].transpose]
+  	    pricemeasure = Pricemeasure.find_by_id(row["id"]) || Pricemeasure.new
 
-      if !Product.find_by(bar_code: row["bar_code"].to_s).nil?
-        pricemeasure.product_id = Product.find_by(bar_code: row["bar_code"].to_s).id
-      end
+        if !Product.find_by(bar_code: row["bar_code"].to_s).nil?
+          pricemeasure.product_id = Product.find_by(bar_code: row["bar_code"].to_s).id
+        end
 
-	    pricemeasure.supermarket_id = row["supermarket"]
-	    pricemeasure.price = row["price"]
-	    pricemeasure.discount = row["discount"]
-	    pricemeasure.measured_at = row["measured_at"]
-      result << pricemeasure
-	  end
+  	    pricemeasure.supermarket_id = row["supermarket"]
+  	    pricemeasure.price = row["price"]
+  	    pricemeasure.discount = row["discount"]
+  	    pricemeasure.measured_at = row["measured_at"]
+        result << pricemeasure
+	    end
+    end
     result 
   end
 
