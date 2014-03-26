@@ -1,5 +1,5 @@
 <%@selected_products.each do |p| %>
-	<li class="list-group-item", id="item">
+	<li id="item">
 		<%=p.name%>
 	  <%=link_to " [-]", destroy_listitems_path(product_id: p.id, list_id: @list_selected.id, user_id: current_user.id), method: 'delete',
        id: "Remove#{p.id}", class: "badge" %>

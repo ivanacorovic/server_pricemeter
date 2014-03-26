@@ -3,7 +3,7 @@
     <%=render 'choose_the_list'%>
     <h4 class="notification">Selected list: <%=@list_selected.name%></h4>
   </div>
-  <div class="col-md-5">
+  <div class="col-md-5", id="shopping_list">
     <h1 class="shopping">Shopping list </h1>
     <%=render 'shopping_list', object: @selected_products%>
 

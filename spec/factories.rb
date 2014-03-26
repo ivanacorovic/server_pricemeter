@@ -13,7 +13,7 @@ FactoryGirl.define do
 
   factory :product do
   	sequence(:name) { |n| "product_#{n}lala"}
-    image { fixture_file_upload 'public/images/medium/coca-cola.jpeg', 'image/jpeg' }
+    sequence(:bar_code) {|n| "123456789#{n}"}
   end
 
   factory :supermarket do

@@ -24,5 +24,11 @@ Pricemeter::Application.routes.draw do
        get "serve"
      end
   end
+
+  resources :pricemeasures, only: [:index] do
+    collection do
+      post 'import'
+    end
+  end
 	
 end

@@ -4,6 +4,14 @@ class PricemeasuresController < ApplicationController
 		@pricemeasures=Pricemeasure.all
 	end
  
+
+
+	def import
+	  Pricemeasure.import(params[:file])
+	  redirect_to root_path, notice: "Pricemeasures imported."
+	end
+
+
  	private
 
 	def supermarket_params

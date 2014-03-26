@@ -50,3 +50,45 @@ body {
     display: block;
 }
 
+.navbar 
+{
+    background-image: url("../images/b.jpeg");
+    color: white;
+    font-size: 14pt;
+    
+ 
+}
+
+#markets {
+  height: 225px;
+  width: 300px;
+  background-image: url("../images/notebook.jpeg"); 
+  font-size: 16pt;
+  text-align: center;
+}
+
+a {
+  color: blue;
+  font-size: 14pt;
+  font-style: italic;
+  font-weight: bold;
+}
+
+#supermarket {
+  vertical-align: center;
+  margin: 37px;
+}
+
+#item {
+
+  vertical-align: center;
+  margin: 30px;
+
+}
+
+#shopping_list {
+  height: 596px;
+  width: 420px;
+  background-image: url("../images/yellow.jpg"); 
+  text-align: center;
+}
