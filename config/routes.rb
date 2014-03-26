@@ -25,10 +25,13 @@ Pricemeter::Application.routes.draw do
      end
   end
 
-  resources :pricemeasures, only: [:index] do
-    collection do
-      post 'import'
-    end
-  end
-	
+  # resources :pricemeasures, only: [:index] do
+  #   collection do
+  #     post 'import'
+  #   end
+  # end
+  # 
+  
+  resources :pricemeasure_imports
+
 end

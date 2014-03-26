@@ -25,10 +25,10 @@
 		    <% else%>
 		      <li><a href="/listitems">Create shopping list!</a></li>
 		  	<% end %> 
-		  	<% if current_page? pricemeasures_path %>
-	      	<li class="active"><a href="/pricemeasures">Import prices</a></li>
+		  	<% if current_page? new_pricemeasure_import_path %>
+	      	<li class="active"><a href="/pricemeasure_imports/new">Import prices</a></li>
 	   		<% else%>
-	    		<li><a href="/pricemeasures">Import prices</a></li>
+	    		<li><a href="/pricemeasure_imports/new">Import prices</a></li>
 	  		<% end %>  				
 			<% end %>
 		</ul>
