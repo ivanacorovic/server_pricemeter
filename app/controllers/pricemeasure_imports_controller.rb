@@ -13,20 +13,28 @@ class PricemeasureImportsController < ApplicationController
     end
   end
 
-  def bulk_update
-    @results = []
-    10.times do |i|
-      pricemeasure = Pricemeasure.new(product_id: 1, supermarket_id: 1, measured_at: DateTime.now, price: rand(10), discount: true)
-      @results << pricemeasure
-    end
-  end
-
   def upload
     @results = []
     params[:records].each do |r|
-      
-      @price = Pricemeasure.create(r)
-      @results << @price unless @price.errors.empty?
+      pricemeasure = Pricemeasure.new
+      if !Product.find_by(bar_code: r["bar_code"].to_s).nil?
+        pricemeasure.product_id = Product.find_by(bar_code: r["bar_code"].to_s).id
+      else
+         pricemeasure.product_id = nil
+      end
+
+      if !Supermarket.find_by(name: r["supermarket_id"].to_s).nil?
+        pricemeasure.supermarket_id = Supermarket.find_by(name: r["supermarket"]).id
+      else
+        pricemeasure.supermarket_id = nil
+      end
+      pricemeausure.price = r["price"].to_i
+      pricemeasure.measured_at = r["measured_at"] 
+      pricemeasure.discount = r["discount"] 
+
+      pricemeasure.save!
+
+      @results << pricemeasure unless pricemeasure.errors.empty?
     end
     if @results.empty?
      redirect_to root_path

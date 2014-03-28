@@ -12,6 +12,8 @@ class Pricemeasure < ActiveRecord::Base
 	#validates :supermarket_id, presence: { message: "You forgot supermarket somewhere!"}
 	scope :descending, -> {order('measured_at DESC')}
 
+	attr_accessor :bar_code, :supermarket
+	
 	def self.total(prices)
 		@total=prices.sum('price')
 	end

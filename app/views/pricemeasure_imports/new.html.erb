@@ -13,21 +13,10 @@
 
 <p>If an <strong>id</strong> is supplied it will update the matching record instead of creating a new one.</p>
 
-<%= form_for @pricemeasure_import, url: {action: "bulk_update"}, html: {method: "put"} do |f| %>
-  <% if @pricemeasure_import.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@pricemeasure_import.errors.count, "error") %> prohibited this import from completing:</h2>
-      <ul>
-      <% @pricemeasure_import.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_for @pricemeasure_import do |f| %>
   <div class="field">
-    <%= f.file_field :file %>
+    <%= file_field_tag :file %>
   </div>
-  <div class="buttons"><%= f.submit "Import" %></div>
+  <div class="buttons"><%= submit_tag "Import" %></div>
 <% end %>
 
