@@ -1,0 +1,11 @@
+<table>
+	<%@results.each do |r|%>
+		<tr>
+			<td><%= r["bar_code"]%></td>
+			<td><%= r["supermarket"]%></td>
+			<td><%= r["price"]%></td>
+			<td><%= r["measured_at"]%></td>
+			<td><%= r["discount"]%></td>
+		</tr>
+	<%end%>
+</table>

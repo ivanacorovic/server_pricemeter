@@ -32,6 +32,11 @@ Pricemeter::Application.routes.draw do
   # end
   # 
   
-  resources :pricemeasure_imports
+  resources :pricemeasure_imports do
+    collection do
+       put "bulk_update"
+       put "upload"
+    end
+  end
 
 end

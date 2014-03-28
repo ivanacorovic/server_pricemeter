@@ -8,6 +8,7 @@ class Pricemeasure < ActiveRecord::Base
 	validates :product_id, :presence => true
 	validates :supermarket_id, :presence => true
 	validates :price, presence: { message: "You have to input price!"}
+	validates :discount, presence:  true 
 	#validates :supermarket_id, presence: { message: "You forgot supermarket somewhere!"}
 	scope :descending, -> {order('measured_at DESC')}
 

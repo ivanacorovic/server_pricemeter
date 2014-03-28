@@ -1,0 +1,23 @@
+<%= form_tag upload_pricemeasure_imports_path, method: :put do %>
+	<% @results.each do |record|%>
+		<%= fields_for 'records[]', record do |f| %>
+			<%if record.errors.any? %>
+				<div id="error_explaination">
+					<h2><%= pluralize(record.errors.count, "error")%> prohibited this procemeasure from being saved: </h2>
+					<ul>
+					<%record.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<%end%>
+					</ul>
+				</div>
+			<%end%>
+		  <%= f.text_field :product_id %>
+			<%= f.text_field :supermarket_id%>
+			<%= f.text_field :price%>
+			<%= f.text_field :discount%>
+			<%= f.text_field :measured_at%>
+		<% end %>
+		<br>
+	<% end %>
+	<div class="buttons"><%= submit_tag "Submit" %></div>
+<%end%>
