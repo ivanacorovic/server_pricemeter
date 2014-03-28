@@ -38,7 +38,14 @@ class PricemeasureImport
     if !spreadsheet.empty?(1, 1)
       header = spreadsheet.row(1)
       (2..spreadsheet.last_row).each do |i|
-        result << Hash[[header, spreadsheet.row(i)].transpose]
+        temp = Hash[[header, spreadsheet.row(i)].transpose]
+        pm = Pricemeasure.new
+        pm.bar_code = temp["bar_code"]
+        pm.supermarket_id = 1
+        pm.price = temp["price"]
+        pm.measured_at = temp["measured_at"]
+        pm.discount = temp["discount"]
+        result << pm
       end
     end
     result

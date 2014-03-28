@@ -15,8 +15,8 @@
 
 <%= form_for @pricemeasure_import do |f| %>
   <div class="field">
-    <%= file_field_tag :file %>
+    <%= f.file_field :file %>
   </div>
-  <div class="buttons"><%= submit_tag "Import" %></div>
+  <div class="buttons"><%= f.submit "Import" %></div>
 <% end %>
 

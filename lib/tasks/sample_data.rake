@@ -14,13 +14,5 @@ namespace :db do
           FactoryGirl.create(:pricemeasure, product: product, supermarket: market)
         end
       end
-
-      # @users.each do |user|
-      #   @lists.each do |list| 
-      #     @products.each do |product| 
-      #       FactoryGirl.create(:cart, product: product, list: list, user: user)
-      #     end
-      #   end
-      # end
     end
 end

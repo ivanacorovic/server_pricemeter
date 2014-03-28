@@ -5,14 +5,14 @@ class Pricemeasure < ActiveRecord::Base
 	belongs_to :product
 	belongs_to :supermarket
 
-	validates :product_id, :presence => true
-	validates :supermarket_id, :presence => true
+	validates :product, :presence => true
+	validates :supermarket, :presence => true
 	validates :price, presence: { message: "You have to input price!"}
 	validates :discount, presence:  true 
 	#validates :supermarket_id, presence: { message: "You forgot supermarket somewhere!"}
 	scope :descending, -> {order('measured_at DESC')}
 
-	attr_accessor :bar_code, :supermarket
+	attr_accessor :bar_code
 	
 	def self.total(prices)
 		@total=prices.sum('price')

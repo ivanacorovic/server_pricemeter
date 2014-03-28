@@ -23,23 +23,20 @@ class PricemeasureImportsController < ApplicationController
          pricemeasure.product_id = nil
       end
 
-      if !Supermarket.find_by(name: r["supermarket_id"].to_s).nil?
-        pricemeasure.supermarket_id = Supermarket.find_by(name: r["supermarket"]).id
-      else
-        pricemeasure.supermarket_id = nil
-      end
-      pricemeausure.price = r["price"].to_i
+      pricemeasure.supermarket_id = 1
+    
+      pricemeasure.price = r["price"].to_i
       pricemeasure.measured_at = r["measured_at"] 
       pricemeasure.discount = r["discount"] 
 
-      pricemeasure.save!
+      pricemeasure.save
 
       @results << pricemeasure unless pricemeasure.errors.empty?
     end
     if @results.empty?
      redirect_to root_path
     else
-      render "bulk_update"
+      render "create"
     end
   end
 

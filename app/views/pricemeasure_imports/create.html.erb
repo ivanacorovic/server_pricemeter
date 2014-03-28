@@ -4,9 +4,11 @@
 	<%=label_tag 'price' %>
 	<%=label_tag 'discount' %>
 	<%=label_tag 'measured_at' %>
+	<br>
 	<% @results.each do |record|%>
+	<h1><%=record[:bar_code]%></h1>
 		<%= fields_for 'records[]', record do |f| %>
-			<%if record.try.errors.any? %>
+			<%if !record.errors.empty? %>
 				<div id="error_explaination">
 					<h2><%= pluralize(record.errors.count, "error")%> prohibited this procemeasure from being saved: </h2>
 					<ul>
@@ -16,9 +18,10 @@
 					</ul>
 				</div>
 			<%end%>
-		  <%= f.text_field :bar_code %>
+			<h1><%=record[:bar_code]%></h1>
+			<%= f.text_field :bar_code%>
 			<%= f.text_field :supermarket%>
-			<%= f.text_field :price%>
+			<%= f.text_field :price %>
 			<%= f.text_field :discount%>
 			<%= f.text_field :measured_at%>
 		<% end %>
@@ -26,3 +29,5 @@
 	<% end %>
 	<div class="buttons"><%= submit_tag "Submit" %></div>
 <%end%>
+	<h1><%=@results.count%></h1>
+
