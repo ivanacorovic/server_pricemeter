@@ -12,6 +12,8 @@ class Pricemeasure < ActiveRecord::Base
 	#validates :supermarket_id, presence: { message: "You forgot supermarket somewhere!"}
 	scope :descending, -> {order('measured_at DESC')}
 
+	scope :by_market,->(market) {where(supermarket_id: market.id)}
+
 	attr_accessor :bar_code
 	
 	def self.total(prices)
@@ -34,6 +36,9 @@ class Pricemeasure < ActiveRecord::Base
 		end
 	end
 
+	def self.price_for(product, date)
+		where(product_id: product, measured_at: date.beginning_of_day..date.end_of_day).average(:price) || 0
+	end
 	
 
 end

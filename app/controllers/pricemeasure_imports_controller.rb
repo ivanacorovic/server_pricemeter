@@ -9,7 +9,7 @@ class PricemeasureImportsController < ApplicationController
       redirect_to :back
     else
       @pricemeasure_import = PricemeasureImport.new(params[:pricemeasure_import])
-      @results = @pricemeasure_import.parse_spreadsheet
+      @results = @pricemeasure_import.parse_spreadsheet(params[:supermarket_id].to_i)
     end
   end
 
@@ -23,7 +23,7 @@ class PricemeasureImportsController < ApplicationController
          pricemeasure.product_id = nil
       end
 
-      pricemeasure.supermarket_id = 1
+      pricemeasure.supermarket_id = r["supermarket_id"]
     
       pricemeasure.price = r["price"].to_i
       pricemeasure.measured_at = r["measured_at"] 

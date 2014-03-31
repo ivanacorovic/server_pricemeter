@@ -1,6 +1,5 @@
 <%= form_tag upload_pricemeasure_imports_path, method: :put do %>
 	<%=label_tag 'barcode' %>
-	<%=label_tag 'supermarket' %>
 	<%=label_tag 'price' %>
 	<%=label_tag 'discount' %>
 	<%=label_tag 'measured_at' %>
@@ -20,7 +19,7 @@
 			<%end%>
 			<h1><%=record[:bar_code]%></h1>
 			<%= f.text_field :bar_code%>
-			<%= f.text_field :supermarket%>
+			<%= f.hidden_field :supermarket_id%>
 			<%= f.text_field :price %>
 			<%= f.text_field :discount%>
 			<%= f.text_field :measured_at%>
@@ -29,5 +28,4 @@
 	<% end %>
 	<div class="buttons"><%= submit_tag "Submit" %></div>
 <%end%>
-	<h1><%=@results.count%></h1>
 

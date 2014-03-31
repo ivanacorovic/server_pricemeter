@@ -15,7 +15,11 @@
 
 <%= form_for @pricemeasure_import do |f| %>
   <div class="field">
+    <%=select_tag(:supermarket_id, options_from_collection_for_select(Supermarket.all, :id, :name)) %>
+  </div>
+  <div class="field">
     <%= f.file_field :file %>
+
   </div>
   <div class="buttons"><%= f.submit "Import" %></div>
 <% end %>
