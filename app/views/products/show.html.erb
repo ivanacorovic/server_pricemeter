@@ -7,11 +7,10 @@
     <div class="col-md-3">
       <h4><%= market.name %></h4>
       <ul>
-        <% get_prices(market, @pricemeasures).each do |pm| %>  
-          <li class="list-group-item"><%= pm.price %>
+          <li class="list-group-item"><%= @pricemeasures.descending.by_market(market).first.price %>
             <span class="badge">&#8364</span>
           </li>
-        <% end%>
+     
       </ul>
     </div>
   <% end %>
