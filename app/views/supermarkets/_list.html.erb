@@ -1,5 +1,5 @@
 <%@supermarkets.each do |market| %>
-	<li id="supermarket">
+	<li id="supermarket" class="list-group-item" >
 		<%=link_to supermarket_path(market.id) do%>
 			<%=market.name %>
 		<%end%>

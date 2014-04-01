@@ -5,7 +5,6 @@
 	<%=label_tag 'measured_at' %>
 	<br>
 	<% @results.each do |record|%>
-	<h1><%=record[:bar_code]%></h1>
 		<%= fields_for 'records[]', record do |f| %>
 			<%if !record.errors.empty? %>
 				<div id="error_explaination">
@@ -17,14 +16,14 @@
 					</ul>
 				</div>
 			<%end%>
-			<h1><%=record[:bar_code]%></h1>
-			<%= f.text_field :bar_code%>
-			<%= f.hidden_field :supermarket_id%>
-			<%= f.text_field :price %>
-			<%= f.text_field :discount%>
-			<%= f.text_field :measured_at%>
+			<div class="record">
+				<%= f.text_field :bar_code%>
+				<%= f.hidden_field :supermarket_id%>
+				<%= f.text_field :price %>
+				<%= f.text_field :discount%>
+				<%= f.text_field :measured_at%>
+			</div>
 		<% end %>
-		<br>
 	<% end %>
 	<div class="buttons"><%= submit_tag "Submit" %></div>
 <%end%>
