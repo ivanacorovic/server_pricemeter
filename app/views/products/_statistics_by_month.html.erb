@@ -1,0 +1,10 @@
+<h5>Last month's prices:</h5>
+<div>
+  Average: <%=number_with_precision(Pricemeasure.by_market(@market).last_month_average(@product.id), :precision => 2) %>&#8364
+</div>
+ <div>
+  Maximum: <%=number_with_precision(Pricemeasure.by_market(@market).last_month_average(@product.id), :precision => 2) %>&#8364
+</div>
+ <div>
+  Minimum: <%=number_with_precision(Pricemeasure.by_market(@market).last_month_average(@product.id), :precision => 2) %>&#8364
+</div>

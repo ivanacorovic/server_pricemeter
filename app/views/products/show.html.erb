@@ -1,8 +1,12 @@
-<h2><%="Prices for #{@product.name}"%></h2>
+<h3><%="Prices for #{@product.name}"%></h3>
 <div class="col-md-12">
   <div class="col-md-3",  id='product'>
     <%= image_tag @product.image.url(:thumb)%>
+     <div>
+     <%= render 'statistics_by_year', locals: {market: @market} %>
   </div>
+  </div>
+ 
   <% @supermarkets.each do |market| %>
     <div class="col-md-3">
       <h4><%= market.name %></h4>
@@ -10,8 +14,10 @@
           <li class="list-group-item"><%= @pricemeasures.descending.by_market(market).first.price %>
             <span class="badge">&#8364</span>
           </li>
-     
+          <% @market = market %>
+          <%= render 'statistics_by_month', locals: {market: @market} %>
       </ul>
+
     </div>
   <% end %>
   <div id="products_chart" class="col-md-9">
@@ -36,7 +42,6 @@
       }
     },
   
-    
     series: [
       <% @supermarkets.each do |market| %>
         {

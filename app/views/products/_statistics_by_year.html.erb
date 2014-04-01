@@ -1,0 +1,7 @@
+<h3>Maximum price</h3>
+<div>
+  Last year: <%=number_with_precision(Pricemeasure.max_by_year(@product.id, Date.today-1.years), :precision => 2) %>&#8364
+  <br>
+  This year: <%=number_with_precision(Pricemeasure.max_by_year(@product.id, Date.today), :precision => 2) %>&#8364
+</div>
+ 

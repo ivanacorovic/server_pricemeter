@@ -1,14 +1,15 @@
 <div>
 	<ul>
 	  <h4><%= @market.name %></h4>
-		<%@prices = prices_from_the_list(@market, @selected_products)%>
-		<% if !@prices.empty?%>
-			<%@prices.each do |price| %> 
-        <li class="list-group-item">
-          <span align='center'><%=price.product.name%></span>
-          <span class="badge"> <%=price.price%> &#8364</span>
-        </li>
-      <%end%>       
+    <% @prices = Pricemeasure.by_market(@market).latest_prices.prices_from_the_list(@selected_products)%>
+       <% if !@prices.empty?%>
+        <%@prices.each do |price| %> 
+     
+          <li class="list-group-item">
+            <span align='center'><%=price.product.name%></span>
+            <span class="badge"> <%=price.price%> &#8364</span>
+          </li>
+        <%end%>       
     <%end%>
   </ul>
   <span>

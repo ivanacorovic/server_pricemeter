@@ -17,8 +17,8 @@ module ApplicationHelper
 	end
 
 	def prices_from_the_list(market, products)
-		@prices = Pricemeasure.where("supermarket_id= ? and product_id IN (?)",
-			market.id,  products)
+		@prices = Pricemeasure.descending.where("supermarket_id= ? and product_id IN (?)",
+			market.id,  products).limit(1)
 	end
 
 end

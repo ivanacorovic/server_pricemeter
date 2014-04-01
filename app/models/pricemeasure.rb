@@ -14,10 +14,30 @@ class Pricemeasure < ActiveRecord::Base
 
 	scope :by_market,->(market) {where(supermarket_id: market.id)}
 
+	scope :latest_prices, lambda {
+		 
+		joins(%Q{
+			LEFT OUTER JOIN pricemeasures ls ON
+			(
+				pricemeasures.measured_at < ls.measured_at AND
+				pricemeasures.product_id = ls.product_id AND
+				pricemeasures.supermarket_id = ls.supermarket_id
+			)
+		}).where("ls.id IS NULL")
+	}
+
 	attr_accessor :bar_code
 	
 	def self.total(prices)
 		@total=prices.sum('price')
+	end
+
+
+
+	def self.prices_from_the_list(products)
+
+		where("pricemeasures.product_id IN (?)", products)
+		#where(product_id: product)
 	end
 
 	def self.get_products_on_sale(market)
@@ -40,5 +60,20 @@ class Pricemeasure < ActiveRecord::Base
 		where(product_id: product, measured_at: date.beginning_of_day..date.end_of_day).average(:price) || 0
 	end
 	
+	def self.last_month_average(product)
+		where(product_id: product, measured_at: (Date.today-1.months).at_beginning_of_month..(Date.today-1.months).end_of_month).average(:price) || 0
+	end
+
+	def self.last_month_max(product)
+		where(product_id: product, measured_at: (Date.today-1.months).at_beginning_of_month..(Date.today-1.months).end_of_month).maximum(:price) || 0
+	end
+
+	def self.last_month_min(product)
+		where(product_id: product, measured_at: (Date.today-1.months).at_beginning_of_month..(Date.today-1.months).end_of_month).minimum(:price) || 0
+	end
+
+	def self.max_by_year(product, date)
+		where(product_id: product, measured_at: (date).at_beginning_of_year..(date).end_of_year).maximum(:price) || 0
+	end
 
 end
