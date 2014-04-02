@@ -11,7 +11,7 @@ namespace :db do
       @lists = FactoryGirl.create_list(:list, 5)
       @supermarkets.each do |market| 
         @products.each do |product| 
-          FactoryGirl.create(:pricemeasure, product: product, supermarket: market)
+          FactoryGirl.create_list(:pricemeasure, 20, product: product, supermarket: market)
         end
       end
     end

@@ -9,6 +9,7 @@ class Pricemeasure < ActiveRecord::Base
 	validates :supermarket, :presence => true
 	validates :price, presence: { message: "You have to input price!"}
 	validates :discount, presence:  true 
+	validates :bar_code, format: { with: /[0-9]{8} | [0-9]{13}/, message: "13 or 8 digits for bar_code"}
 	#validates :supermarket_id, presence: { message: "You forgot supermarket somewhere!"}
 	scope :descending, -> {order('measured_at DESC')}
 
@@ -40,18 +41,20 @@ class Pricemeasure < ActiveRecord::Base
 		#where(product_id: product)
 	end
 
-	def self.get_products_on_sale(market)
-		where(supermarket_id: market.id, discount: true, measured_at: 2.week.ago..DateTime.now)
+	def self.products_on_sale
+		where(discount: true)
 	end
 
 	private
 	
 	def remove_prev_discount
 		if self.discount == true
-			prices=Pricemeasure.where(product_id: self.product_id, 
+			prices = Pricemeasure.where(product_id: self.product_id, 
 			 supermarket_id: self.supermarket_id, discount: true)
-			if prices
-					prices.update_all(discount: false)
+			prices.each do |price|
+				if price.measured_at <= self.measured_at
+					price.update(discount: false)
+				end
 			end
 		end
 	end

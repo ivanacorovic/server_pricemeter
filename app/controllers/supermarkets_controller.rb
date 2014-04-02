@@ -8,14 +8,15 @@ class SupermarketsController < ApplicationController
 
 	def show
 		@supermarket = Supermarket.find(params[:id])
-		@products = @supermarket.products
-		@products = @products.paginate(:page => params[:page], :per_page => 10)
-		@pricemeasures = @supermarket.pricemeasures
+		#@products = @supermarket.products.distinct
+		@pricemeasures = Pricemeasure.by_market(@supermarket).latest_prices
+		@pricemeasures = @pricemeasures.paginate(:page => params[:page], :per_page => 10)
 	end
 
 	def discount
 		@supermarket = Supermarket.find(params[:id])
-		@pricemeasures = @supermarket.products_on_sale.page(params[:page]).per_page(10)
+		@pricemeasures = Pricemeasure.by_market(@supermarket).latest_prices.products_on_sale
+		@pricemeasures = @pricemeasures.paginate(:page => params[:page], :per_page => 10)
 	end
 
   private

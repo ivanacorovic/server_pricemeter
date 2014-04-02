@@ -13,7 +13,7 @@ FactoryGirl.define do
 
   factory :product do
   	sequence(:name) { |n| "product_#{n}lala"}
-    sequence(:bar_code) {|n| "123456789#{n}"}
+    sequence(:bar_code) {|n| "11111111"}
   end
 
   factory :supermarket do
@@ -22,7 +22,7 @@ FactoryGirl.define do
 
   factory :pricemeasure do
     price {rand(50.00)}
-    measured_at {1.days.ago}
+    measured_at {rand(50).days.ago}
     discount true
     product
     supermarket

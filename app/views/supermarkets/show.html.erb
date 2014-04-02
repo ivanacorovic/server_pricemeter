@@ -1,10 +1,10 @@
 <div class="col-md-7">
   <ul>
-	 	<% @products.each do |product| %>  
+	 	<% @pricemeasures.each do |pricemeasure| %>  
 	    <li class="list-group-item">
-	    	<%= product.pricemeasures.first.product.name %>
+	    	<%= pricemeasure.product.name %>
 	    	<span class="badge">
-	    		<%= product.pricemeasures.first.price %> &#8364
+	    		<%= pricemeasure.price %> &#8364
 	    	</span>
 	    </li> 
 		<%end %>
@@ -16,4 +16,4 @@
 	<%end%>
 </div>
 
-<%=will_paginate @products %>
+<%=will_paginate @pricemeasures %>
