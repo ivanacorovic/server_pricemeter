@@ -9,8 +9,7 @@ class Pricemeasure < ActiveRecord::Base
 	validates :supermarket, :presence => true
 	validates :price, presence: { message: "You have to input price!"}
 	validates :discount, presence:  true 
-	validates :bar_code, format: { with: /[0-9]{8} | [0-9]{13}/, message: "13 or 8 digits for bar_code"}
-	#validates :supermarket_id, presence: { message: "You forgot supermarket somewhere!"}
+	#validates :bar_code, format: { with: /\A([0-9]{8}|[0-9]{13})\Z/, message: "%{value} must be 13 or 8 digits for bar_code"}
 	scope :descending, -> {order('measured_at DESC')}
 
 	scope :by_market,->(market) {where(supermarket_id: market.id)}

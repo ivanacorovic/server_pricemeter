@@ -17,10 +17,14 @@ class PricemeasureImportsController < ApplicationController
     @results = []
     params[:records].each do |r|
       pricemeasure = Pricemeasure.new
-      if !Product.find_by(bar_code: r["bar_code"].to_s).nil?
-        pricemeasure.product_id = Product.find_by(bar_code: r["bar_code"].to_s).id
+      if r["bar_code"].size == 8 || r["bar_code"].size == 13
+        if !Product.find_by(bar_code: r["bar_code"].to_s).nil?
+          pricemeasure.product_id = Product.find_by(bar_code: r["bar_code"].to_s).id
+        else
+           pricemeasure.product_id = nil
+        end
       else
-         pricemeasure.product_id = nil
+        pricemeasure.errors[:base] << "Must be 13 or 8 digits long!"
       end
 
       pricemeasure.supermarket_id = r["supermarket_id"]
