@@ -2,12 +2,12 @@ class Pricemeasure < ActiveRecord::Base
 
 	before_save :remove_prev_discount
 
-	belongs_to :product
+	belongs_to :product 
 	belongs_to :supermarket
 
-	validates :product, :presence => true
-	validates :supermarket, :presence => true
-	validates :price, presence: { message: "You have to input price!"}
+	validates :product, presence:  { message: "No product with that bar_code"}
+	validates :supermarket, presence: true
+	validates :price, presence: true
 	validates :discount, presence:  true 
 	#validates :bar_code, format: { with: /\A([0-9]{8}|[0-9]{13})\Z/, message: "%{value} must be 13 or 8 digits for bar_code"}
 	scope :descending, -> {order('measured_at DESC')}

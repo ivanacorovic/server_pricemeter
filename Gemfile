@@ -12,6 +12,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate'
 gem 'roo', '~> 1.13.2'
+gem 'foreigner'
 
 group :test, :development do
   gem 'rspec-rails'
@@ -24,6 +25,15 @@ group :test do
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'shoulda-matchers'
 end 
+
+group :development do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-bundler', '~> 1.1.2'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -51,7 +61,7 @@ end
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

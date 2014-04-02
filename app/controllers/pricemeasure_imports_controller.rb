@@ -29,7 +29,8 @@ class PricemeasureImportsController < ApplicationController
 
       pricemeasure.supermarket_id = r["supermarket_id"]
     
-      pricemeasure.price = r["price"].to_i
+      pricemeasure.price = r["price"].to_i unless r["price"] == ''
+
       pricemeasure.measured_at = r["measured_at"] 
       pricemeasure.discount = r["discount"] 
 

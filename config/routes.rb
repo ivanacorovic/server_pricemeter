@@ -4,7 +4,7 @@ Pricemeter::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
   root to: 'homepage#home'
-  resources :products
+  resources :products, only: [:index, :show, :new]
   resources :users
   resources :supermarkets, only: [:show] do
     member do
@@ -24,17 +24,9 @@ Pricemeter::Application.routes.draw do
        get "serve"
      end
   end
-
-  # resources :pricemeasures, only: [:index] do
-  #   collection do
-  #     post 'import'
-  #   end
-  # end
-  # 
   
-  resources :pricemeasure_imports do
+  resources :pricemeasure_imports, only: [:new, :create] do
     collection do
-       put "bulk_update"
        put "upload"
     end
   end
