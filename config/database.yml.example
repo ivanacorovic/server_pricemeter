@@ -1,6 +1,6 @@
 production:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   database: pricemeter_production
   pool: 5
   username: pricemeter

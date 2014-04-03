@@ -20,7 +20,7 @@ namespace :deploy do
       # set in the stage files
       config_files = fetch(:config_files)
       config_files.each do |file|
-      smart_template file
+        smart_template file
       end
 
       # which of the above files should be marked as executable
