@@ -1,6 +1,4 @@
 
-
-
 namespace :rbenv do
   desc "Install rbenv, Ruby, and the Bundler gem"
   task :install do

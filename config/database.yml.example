@@ -1,0 +1,7 @@
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: pricemeter_production
+  pool: 5
+  username: pricemeter
+  password:
