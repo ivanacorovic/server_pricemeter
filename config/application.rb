@@ -29,6 +29,7 @@ module Pricemeter
       Devise::SessionsController.skip_before_filter :authenticate_user!
     end
   config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+  config.assets.initialize_on_precompile = false
   end
 
 end
