@@ -5,6 +5,7 @@ namespace :db do
   desc "Fill database with sample data"
     task populate: :environment do
       #require File.expand_path("spec/factories.rb")
+      @admin = FactoryGirl.create(:admin_user)
       @users = FactoryGirl.create_list(:user, 5)
       @supermarkets = FactoryGirl.create_list(:supermarket, 3)
       @products = FactoryGirl.create_list(:product, 20)
