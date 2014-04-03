@@ -13,15 +13,14 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate'
 gem 'roo', '~> 1.13.2'
 gem 'foreigner'
+gem 'factory_girl_rails', '4.2.1'
 
 group :test, :development do
   gem 'rspec-rails'
   gem 'awesome_print'
 end
 
-group :production, :test do
-   gem 'factory_girl_rails', '4.2.1'
-end
+
 
 group :test do
   gem 'capybara', '2.1.0'
