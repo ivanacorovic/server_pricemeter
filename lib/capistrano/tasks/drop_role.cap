@@ -1,5 +1,5 @@
  namespace :db do
- task :drop_database do
+ task :drop_role do
     on roles(:db) do
       postgresql_user = fetch(:application)
       execute :sudo, "-u", "postgres", "psql", "-c", %Q{"drop role #{postgresql_user};"}
