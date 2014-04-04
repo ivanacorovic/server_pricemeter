@@ -1,4 +1,5 @@
-require 'will_paginate/array'
+#require 'will_paginate/array'
+require 'kaminari'
 
 class ProductsController < ApplicationController
 before_filter :authenticate_user!, only: [:new, :edit, :create]
@@ -20,7 +21,13 @@ before_filter :authenticate_user!, only: [:new, :edit, :create]
 
 	def create
 		@product = Product.create(product_params)
-		redirect_to products_path
+		@product.save
+
+		if @product.save		
+			redirect_to products_path
+		else
+			render 'new'
+		end
 	end
 
 	private
@@ -29,6 +36,6 @@ before_filter :authenticate_user!, only: [:new, :edit, :create]
 	# Be sure to update your create() and update() controller methods.
 
 	def product_params
-	  params.require(:product).permit(:name, :image)
+	  params.require(:product).permit(:name, :image, :bar_code)
 	end
 end

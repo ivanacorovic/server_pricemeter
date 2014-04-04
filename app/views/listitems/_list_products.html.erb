@@ -1,4 +1,4 @@
-<%@products=@products.paginate(:page => params[:page], :per_page => 7)%>
+<%@products=Kaminari.paginate_array(@products).page(params[:page]).per(7)%>
 <% @products.each do |product| %>
    
   <%=form_tag(listitems_path, {method: 'post', class: "list-group-item clearfix"}) do %> 
@@ -13,5 +13,5 @@
  		 <%end%>
 		 <%end%>
 <%end%>
-<%=will_paginate @products %>
+<%=paginate @products %>
 

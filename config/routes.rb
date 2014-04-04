@@ -4,7 +4,7 @@ Pricemeter::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
   root to: 'homepage#home'
-  resources :products, only: [:index, :show, :new]
+  resources :products, except: :destroy
   resources :users
   resources :supermarkets, only: [:show] do
     member do

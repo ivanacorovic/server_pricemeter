@@ -1,4 +1,5 @@
-require 'will_paginate/array'
+#require 'will_paginate/array'
+require 'kaminari'
 
 class SupermarketsController < ApplicationController
 
@@ -10,13 +11,13 @@ class SupermarketsController < ApplicationController
 		@supermarket = Supermarket.find(params[:id])
 		#@products = @supermarket.products.distinct
 		@pricemeasures = Pricemeasure.by_market(@supermarket).latest_prices
-		@pricemeasures = @pricemeasures.paginate(:page => params[:page], :per_page => 10)
+		@pricemeasures = Kaminari.paginate_array(@pricemeasures).page(params[:page]).per(10)
 	end
 
 	def discount
 		@supermarket = Supermarket.find(params[:id])
 		@pricemeasures = Pricemeasure.by_market(@supermarket).latest_prices.products_on_sale
-		@pricemeasures = @pricemeasures.paginate(:page => params[:page], :per_page => 10)
+		@pricemeasures = Kaminari.paginate_array(@pricemeasures).page(params[:page]).per(10)
 	end
 
   private

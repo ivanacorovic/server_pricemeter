@@ -21,15 +21,20 @@
 
 	  	<% if user_signed_in? %>
 		  	<% if current_page? listitems_path %>
-		      <li class="active"><a href="/listitems">Create shopping list!</a></li>
+		      <li class="active"><a href="/listitems">Create your shopping list!</a></li>
 		    <% else%>
-		      <li><a href="/listitems">Create shopping list!</a></li>
+		      <li><a href="/listitems">Create your shopping list!</a></li>
 		  	<% end %> 
 		  	<% if current_page? new_pricemeasure_import_path %>
 	      	<li class="active"><a href="/pricemeasure_imports/new">Import prices</a></li>
 	   		<% else%>
 	    		<li><a href="/pricemeasure_imports/new">Import prices</a></li>
-	  		<% end %>  			
+	  		<% end %> 
+	  		<% if current_page? new_product_path %>
+		      <li class="active"><a href="/products/new">Add a product</a></li>
+		    <% else%>
+		      <li><a href="/products/new">Add a product</a></li>
+		  	<% end %>  			
 			<% end %>
 		</ul>
 		

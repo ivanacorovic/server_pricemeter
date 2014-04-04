@@ -1,4 +1,5 @@
-require 'will_paginate/array'
+#require 'will_paginate/array'
+require 'kaminari'
 
 class ListitemsController < ApplicationController
 	before_filter :authenticate_user!, only: [:new, :edit, :create]
