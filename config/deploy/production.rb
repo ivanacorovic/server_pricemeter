@@ -18,7 +18,7 @@ set :branch, "master"
 
 set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
 
-server '188.226.192.14', user: 'deployer', roles: %w{web app db}
+server 'dev.416.bike', user: 'deployer', roles: %w{web app db}
 
 set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:application)}"
 

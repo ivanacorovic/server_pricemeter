@@ -29,13 +29,11 @@ group :test do
   gem 'shoulda-matchers'
 end 
 
-group :development do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'capistrano', '~> 3.1'
-  gem 'capistrano-rails', '~> 1.1'
-  gem 'capistrano-rbenv', '~> 2.0'
-  gem 'capistrano-bundler', '~> 1.1.2'
-end
+# bundle exec rake doc:rails generates the API under doc/api.
+gem 'capistrano', '~> 3.1'
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-rbenv', '~> 2.0'
+gem 'capistrano-bundler', '~> 1.1.2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -64,7 +62,7 @@ end
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-gem 'unicorn'
+# gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

@@ -2,6 +2,29 @@ production:
   adapter: postgresql
   encoding: utf8
   database: pricemeter_production
-  pool: 5
   username: pricemeter
+  host: localhost
+  pool: 5
+
+  password: secret
+  port: 5433
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: pricemeter_test
+  username: pricemeter
+  host: localhost
+  pool: 5
+  password: secret
+  port: 5433
+
+development:
+  adapter: postgresql
+  username: pricemeter
+  encoding: utf8
+  database: pricemeter_development
+  pool: 5
+  host: localhost
   password:
+  port: 5433
