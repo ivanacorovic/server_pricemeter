@@ -7,7 +7,7 @@ production:
   pool: 5
 
   password: secret
-  port: 5433
+
 
 test:
   adapter: postgresql

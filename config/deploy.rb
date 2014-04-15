@@ -26,12 +26,7 @@ set :linked_files, %w{config/database.yml}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets}
-set(:config_files, %w(
-  nginx_unicorn
-  database.yml
-  unicorn.rb
-  unicorn_init
-))
+
 
 # set(:executable_config_files, %w(
 #   unicorn_init
@@ -73,23 +68,14 @@ set(:config_files, %w(
 # set :keep_releases, 5
 
 namespace :deploy do
+  before :deploy, "deploy:check_revision"
+  before :deploy, "deploy:run_tests"
+  after 'deploy:symlink:shared', 'deploy:compile_assets_locally'
+  after :finishing, 'deploy:cleanup'
 
-  desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
-    end
-  end
-
-  after :publishing, :restart
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+      execute :touch, release_path.join("tmp/restart.txt")
     end
   end
 
