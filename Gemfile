@@ -15,6 +15,7 @@ gem 'kaminari', '>= 0.12.2'
 gem 'roo', '~> 1.13.2'
 gem 'foreigner'
 gem 'factory_girl_rails', '4.2.1'
+gem 'backup'
 
 group :test, :development do
   gem 'rspec-rails'
@@ -27,7 +28,7 @@ group :test do
   gem 'capybara', '2.1.0'
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'shoulda-matchers'
-  gem 'ci_repoter', '1.8.0'
+  gem 'ci_reporter', '1.8.0'
 end 
 
 # bundle exec rake doc:rails generates the API under doc/api.
