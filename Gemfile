@@ -27,6 +27,7 @@ group :test do
   gem 'capybara', '2.1.0'
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'shoulda-matchers'
+  gem 'ci_repoter', '1.8.0'
 end 
 
 # bundle exec rake doc:rails generates the API under doc/api.

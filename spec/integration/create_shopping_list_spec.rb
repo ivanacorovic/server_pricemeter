@@ -13,7 +13,7 @@ feature 'Create shopping list' do
     end
 		visit root_path
 		sign_in
-		click_link("Create shopping list!")
+		click_link("Create your shopping list!")
 		click_on("Submit#{@products.first.id}")
 		expect(page).to have_css('#item', count: 1)
 		click_on("Remove#{@products.first.id}")
