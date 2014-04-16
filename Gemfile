@@ -16,6 +16,7 @@ gem 'roo', '~> 1.13.2'
 gem 'foreigner'
 gem 'factory_girl_rails', '4.2.1'
 gem 'backup'
+gem 'whenever', :require => false
 
 group :test, :development do
   gem 'rspec-rails'

@@ -5,7 +5,6 @@ production:
   username: pricemeter
   host: localhost
   pool: 5
-
   password: secret
 
 
@@ -26,5 +25,5 @@ development:
   database: pricemeter_development
   pool: 5
   host: localhost
-  password:
+  password: secret
   port: 5433
