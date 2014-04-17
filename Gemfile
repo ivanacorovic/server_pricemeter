@@ -18,6 +18,7 @@ gem 'factory_girl_rails', '4.2.1'
 gem 'backup'
 gem 'whenever', :require => false
 
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'awesome_print'
@@ -30,6 +31,8 @@ group :test do
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'shoulda-matchers'
   gem 'ci_reporter', '1.8.0'
+  gem 'simplecov-rcov'
+	gem 'simplecov'
 end 
 
 # bundle exec rake doc:rails generates the API under doc/api.

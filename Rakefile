@@ -3,8 +3,8 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-require 'ci/reporter/rake/rspec' 
-require 'ci/reporter/rake/cucumber'
+# require 'ci/reporter/rake/rspec' 
+# require 'ci/reporter/rake/cucumber'
 
 Pricemeter::Application.load_tasks
 
