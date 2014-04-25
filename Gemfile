@@ -6,7 +6,7 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'pg'
 gem 'high_voltage', '~> 2.1.0'
 gem 'devise'
-gem 'faker', '1.1.2'
+gem 'ffaker'
 gem "paperclip", "~> 4.1"
 gem 'activeadmin', github: 'gregbell/active_admin'
 #gem 'will_paginate', '3.0.4'
@@ -17,6 +17,11 @@ gem 'foreigner'
 gem 'factory_girl_rails', '4.2.1'
 gem 'backup'
 gem 'whenever', :require => false
+gem 'logstasher'
+
+
+gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 
 
 group :test, :development do
@@ -31,8 +36,8 @@ group :test do
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'shoulda-matchers'
   gem 'ci_reporter', '1.8.0'
-  gem 'simplecov-rcov'
-	gem 'simplecov'
+  #  gem 'simplecov-rcov'
+	# gem 'simplecov'
 end 
 
 # bundle exec rake doc:rails generates the API under doc/api.

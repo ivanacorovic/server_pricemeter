@@ -1,5 +1,10 @@
+require 'elasticsearch/model'
+
 class Product < ActiveRecord::Base
-	
+
+	include Searchable
+	index_name "proizvod"
+
 	has_many :pricemeasures, dependent: :delete_all
 	has_many :supermarkets, through: :pricemeasures
 	has_many :listitems, dependent: :delete_all
@@ -9,7 +14,7 @@ class Product < ActiveRecord::Base
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 	validates :bar_code, format: { with: /\A([0-9]{8}|[0-9]{13})\Z/, message: "%{value} must be 13 or 8 digits for bar_code"}
 	
-	def self.search(search)
+	def self.search1(search)
 		if search
 			find(:all, :conditions =>['name LIKE ?',"%#{search}%"])
 		else

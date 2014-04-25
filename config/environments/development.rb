@@ -28,5 +28,14 @@ Pricemeter::Application.configure do
   config.assets.debug = true
 
   Paperclip.options[:command_path] = "/usr/bin/"
+
+  # Enable the logstasher logs for the current environment
+  config.logstasher.enabled = true
+
+  # This line is optional if you do not want to suppress app logs in your <environment>.log
+  config.logstasher.suppress_app_log = false
+  
+  # Enable logging of controller params
+  config.logstasher.log_controller_parameters = true
   
 end

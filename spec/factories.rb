@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :user do
-    sequence(:email) { |n| "person_#{n}@example.com"}
+    email {Faker::Internet.email}
     password "123456789"
     password_confirmation "123456789"
   end
@@ -12,12 +12,12 @@ FactoryGirl.define do
   end
 
   factory :product do
-  	sequence(:name) { |n| "product_#{n}lala"}
+  	name {Faker::Product.product_name}
     bar_code { "11111111" }
   end
 
   factory :supermarket do
-  	sequence(:name) { |n| "market_#{n}"}
+    name {Faker::Company.name}
   end
 
   factory :pricemeasure do

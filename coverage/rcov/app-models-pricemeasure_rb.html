@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>app/models/pricemeasure.rb</title>
+    <link href="./assets/0.2.3/screen.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="./assets/0.2.3/print.css" media="print" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <script type="text/javascript" src="./assets/0.2.3/rcov.js"></script>
+  </head>
+  <body>
+    <h1>Pricemeter C0 Coverage Information - Simploco - RCov</h1>
+    <h2>app/models/pricemeasure.rb</h2>
+
+    <div class="report_table_wrapper">
+      <table class='report' id='report_table'>
+        <thead>
+          <tr>
+            <th class="left_align">Name</th>
+            <th class="right_align">Total Lines</th>
+            <th class="right_align">Lines of Code</th>
+            <th class="left_align">Total Coverage</th>
+            <th class="left_align">Code Coverage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="left_align"><a href="app-models-pricemeasure_rb.html">app/models/pricemeasure.rb</a></td>
+            <td class='right_align'><tt>81</tt></td>
+            <td class='right_align'><tt>36</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>92.59%</tt></div>
+      <div class="percent_graph">
+        <div class="covered" style="width:93px"></div>
+        <div class="uncovered" style="width:7px"></div>
+      </div></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>83.33%</tt></div>
+      <div class="percent_graph">
+        <div class="covered" style="width:83px"></div>
+        <div class="uncovered" style="width:17px"></div>
+      </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Key</h3>
+
+    <div class="key"><pre><span class='marked'>Code reported as executed by Ruby looks like this...</span><span class='marked1'>and this: this line is also marked as covered.</span><span class='inferred'>Lines considered as run by rcov, but not reported by Ruby, look like this,</span><span class='inferred1'>and this: these lines were inferred by rcov (using simple heuristics).</span><span class='uncovered'>Finally, here's a line marked as not executed.</span></pre></div>
+
+    <h3>Coverage Details</h3>
+
+    <table class="details">
+      <tbody>
+        <tr class="marked">
+          <td><pre><a name="line2">2</a> class Pricemeasure &lt; ActiveRecord::Base</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line3">3</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line4">4</a> 	before_save :remove_prev_discount</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line5">5</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line6">6</a> 	belongs_to :product </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line7">7</a> 	belongs_to :supermarket</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line8">8</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line9">9</a> 	validates :product, presence:  { message: &quot;No product with that bar_code&quot;}</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line10">10</a> 	validates :supermarket, presence: true</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line11">11</a> 	validates :price, presence: true</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line12">12</a> 	validates :discount, presence:  true </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line13">13</a> 	#validates :bar_code, format: { with: /\A([0-9]{8}|[0-9]{13})\Z/, message: &quot;%{value} must be 13 or 8 digits for bar_code&quot;}</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line14">14</a> 	scope :descending, -&gt; {order(&#39;measured_at DESC&#39;)}</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line15">15</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line16">16</a> 	scope :by_market,-&gt;(market) {where(supermarket_id: market.id)}</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line17">17</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line18">18</a> 	scope :latest_prices, lambda {</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line19">19</a> 		 </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line20">20</a> 		joins(%Q{</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line21">21</a> 			LEFT OUTER JOIN pricemeasures ls ON</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line22">22</a> 			(</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line23">23</a> 				pricemeasures.measured_at &lt; ls.measured_at AND</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line24">24</a> 				pricemeasures.product_id = ls.product_id AND</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line25">25</a> 				pricemeasures.supermarket_id = ls.supermarket_id</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line26">26</a> 			)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line27">27</a> 		}).where(&quot;ls.id IS NULL&quot;)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line28">28</a> 	}</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line29">29</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line30">30</a> 	attr_accessor :bar_code</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line31">31</a> 	</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line32">32</a> 	def self.total(prices)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line33">33</a> 		@total=prices.sum(&#39;price&#39;)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line34">34</a> 	end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line35">35</a> </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line36">36</a> </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line37">37</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line38">38</a> 	def self.prices_from_the_list(products)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line39">39</a> </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line40">40</a> 		where(&quot;pricemeasures.product_id IN (?)&quot;, products)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line41">41</a> 		#where(product_id: product)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line42">42</a> 	end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line43">43</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line44">44</a> 	def self.products_on_sale</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line45">45</a> 		where(discount: true)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line46">46</a> 	end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line47">47</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line48">48</a> 	private</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line49">49</a> 	</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line50">50</a> 	def remove_prev_discount</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line51">51</a> 		if self.discount == true</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line52">52</a> 			prices = Pricemeasure.where(product_id: self.product_id, </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line53">53</a> 			 supermarket_id: self.supermarket_id, discount: true)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line54">54</a> 			prices.each do |price|</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line55">55</a> 				if price.measured_at &lt;= self.measured_at</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line56">56</a> 					price.update(discount: false)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line57">57</a> 				end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line58">58</a> 			end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line59">59</a> 		end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line60">60</a> 	end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line61">61</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line62">62</a> 	def self.price_for(product, date)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line63">63</a> 		where(product_id: product, measured_at: date.beginning_of_day..date.end_of_day).average(:price) || 0</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line64">64</a> 	end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line65">65</a> 	</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line66">66</a> 	def self.last_month_average(product)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line67">67</a> 		where(product_id: product, measured_at: (Date.today-1.months).at_beginning_of_month..(Date.today-1.months).end_of_month).average(:price) || 0</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line68">68</a> 	end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line69">69</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line70">70</a> 	def self.last_month_max(product)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line71">71</a> 		where(product_id: product, measured_at: (Date.today-1.months).at_beginning_of_month..(Date.today-1.months).end_of_month).maximum(:price) || 0</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line72">72</a> 	end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line73">73</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line74">74</a> 	def self.last_month_min(product)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line75">75</a> 		where(product_id: product, measured_at: (Date.today-1.months).at_beginning_of_month..(Date.today-1.months).end_of_month).minimum(:price) || 0</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line76">76</a> 	end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line77">77</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line78">78</a> 	def self.max_by_year(product, date)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line79">79</a> 		where(product_id: product, measured_at: (date).at_beginning_of_year..(date).end_of_year).maximum(:price) || 0</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line80">80</a> 	end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line81">81</a> </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line82">82</a> end</pre></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Generated on 2014-04-17 16:10:39 +0200 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
+
+  </body>
+</html>
